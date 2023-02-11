@@ -1,22 +1,46 @@
+set nocompatible	" Disable compatibility with vi to avoid unexpected issues (recommended)
 set background=dark
 set tabstop=4
 
 syntax on
 filetype on
-set number			" Show line numbers
-set cursorline		" Highlight line where cursor is currently at
-set cursorcolumn
+filetype plugin on	" Enable plugins and load them fo detected file type
+filetype indent on	" Enable auto indentation
 set nowrap			" Prevent line wraps
 set showcmd			" Show (partial) command in status line
 set showmatch		" Show matching brackets
+set showmode		" Show current mode at the last line
 set hlsearch		" Highlight all results
 set ignorecase		" Do case insensitive matching
 set smartcase		" Enable explicit search for capital letters
 set incsearch		" Incremental search
 
-
-" fg => ForeGround color
-highlight LineNr ctermfg=grey
 highlight Comment ctermfg=darkgrey
 
-" Further hints; e.g. organizing in sections: https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/
+" NAVIGATION ------------------------------------------------------------- {{{
+
+" Enable line numbers
+set number
+highlight LineNr ctermfg=grey
+
+" Highlight line where cursors is currently at
+set cursorline		
+" set cursorcolumn
+" Remove the underline caused by enabling cursorline
+highlight clear CursorLine
+" Set the line numbering to white background and black digits
+highlight CursorLineNR ctermbg=white
+highlight CursorLineNR ctermfg=black
+
+" }}}
+
+" VIMSCRIPT -------------------------------------------------------------- {{{
+
+" Enable code foding using the marker method (default marker: {{{ and }}}
+augroup filetype_vim
+		autocmd!
+		autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+" }}}
+
