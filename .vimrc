@@ -1,6 +1,7 @@
 set nocompatible	" Disable compatibility with vi to avoid unexpected issues (recommended)
 set background=dark
 set tabstop=4
+set shiftwidth=4
 
 syntax on
 filetype on
