@@ -3,6 +3,7 @@ set background=dark
 set tabstop=4
 set shiftwidth=4
 set expandtab		" Use spaces instead of tabs
+set autoindent      " Applies indentation of current line to new line
 
 syntax on
 filetype on
