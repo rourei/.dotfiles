@@ -2,6 +2,7 @@ set nocompatible	" Disable compatibility with vi to avoid unexpected issues (rec
 set background=dark
 set tabstop=4
 set shiftwidth=4
+set expandtab		" Use spaces instead of tabs
 
 syntax on
 filetype on
