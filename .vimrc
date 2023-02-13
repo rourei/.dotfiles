@@ -39,7 +39,7 @@ highlight CursorLineNR ctermfg=black
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
 
-" Enable code foding using the marker method (default marker: {{{ and }}}
+" Enable code folding using the marker method (default marker: {{{ and }}}
 augroup filetype_vim
 		autocmd!
 		autocmd FileType vim setlocal foldmethod=marker
@@ -65,7 +65,7 @@ set statusline+=%=
 " Status line right side.
 set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c 
 
-" Show the status on the second to last line
+"Always show the status line 
 set laststatus=2
 
 " }}}
