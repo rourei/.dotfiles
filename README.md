@@ -9,3 +9,4 @@ Since I just got started with using *vim*, the contained `.vimrc` is also more o
 ## Content
 - `.vimrc`: Configuration for *vim*; currently without plugins or updated key bindings
 - `hyper.config`: Configuration for the [Hyper terminal](https://hyper.is/)
+- `windowsterminal/settings.json`: Configuration for the Windows Terminal app from the Microsoft store
