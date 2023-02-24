@@ -7,7 +7,7 @@ set autoindent      " Applies indentation of current line to new line
 
 syntax on
 filetype on
-filetype plugin on	" Enable plugins and load them fo detected file type
+filetype plugin on	" Enable plugins and load them for detected file type
 filetype indent on	" Enable auto indentation
 set nowrap			" Prevent line wraps
 set showcmd			" Show (partial) command in status line
