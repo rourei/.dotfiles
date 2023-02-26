@@ -18,7 +18,17 @@ set ignorecase		" Do case insensitive matching
 set smartcase		" Enable explicit search for capital letters
 set incsearch		" Incremental search
 
-highlight Comment ctermfg=darkgrey
+" HIGHLIGHTING ----------------------------------------------------------- {{{
+
+" Xterm Color Reference Table ->  https://github.com/guns/xterm-color-table.vim
+
+highlight Comment ctermfg=8
+
+highlight clear SpellBad
+highlight SpellBad ctermfg=1
+highlight clear SpellLocal
+
+" }}}
 
 " NAVIGATION ------------------------------------------------------------- {{{
 
