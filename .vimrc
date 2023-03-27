@@ -67,7 +67,7 @@ set statusline=
 " %M: Modified flag
 " %Y: File type
 " %R: Read-only flag
-set statusline+=\ %F\ %M\ %Y\ %R
+set statusline+=\ %F\ \|\ %M\ \|\ %Y\ %R
 
 " Use a divider to separate the left side from the right side
 set statusline+=%=
