@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Substitute all occurences of : with a new line
+sed 's/:/\n/g' <<< "$PATH"
