@@ -1,0 +1,3 @@
+# Git
+# see https://stackoverflow.com/a/20499690 for details
+alias checkBranchState='git for-each-ref --format="%(refname:short) %(upstream:track) %(upstream:remotename)" refs/heads'
