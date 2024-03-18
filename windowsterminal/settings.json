@@ -3,6 +3,9 @@
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "actions": 
     [
+        {  "command": "toggleFocusMode",
+           "keys": "shift+f12"
+        },
         {
             "command": "paste",
             "keys": "ctrl+v"
