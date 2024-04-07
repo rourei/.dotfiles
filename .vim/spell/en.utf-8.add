@@ -27,3 +27,5 @@ UUIDs
 timestamp
 lifecycle
 ps
+kubectl
+nginx
