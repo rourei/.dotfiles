@@ -1,0 +1,30 @@
+# Keyboards and Keymaps
+
+This directory contains all relevant files as well as additional information for my mechanical keyboards.
+
+## NuPhy Air75 V2
+
+### Files
+
+- `nuphy_air75_v2_ansi_via_v1.3.0.0.bin`: [Custom firmware](./nuphy/nuphy_air75_v2_ansi_via_v1.3.0.0.bin), see corresponding paragraph below
+- `NuPhy_Air75_V2_VIA_V3.json`: [VIA configuration](./nuphy/NuPhy_Air75_V2_VIA_V3.json) file for custom firmware
+- `NuPhy_Air75_V2_VIA_Configuration_Stock.json`: [Official VIA configuration JSON](./nuphy/NuPhy_Air75_V2_VIA_Configuration_Stock.json) from NuPhy's homepage
+- `nuphy_air75_v2.layout.json`: Latest [keymap](./nuphy/nuphy_air75_v2.layout.json)
+
+### Known Issues
+
+- I rarely ran into lost keys and once the keyboard got stuck continuously sending the last pressed key
+  - this happened only in wireless mode (Bluetooth, did not yet test the 2.4 GHz dongle)
+  - according to various threads on the internet, this is a known issue and is supposed to be fixed by a firmware update
+  - main thread on reddit can be found [here](https://www.reddit.com/r/NuPhy/comments/1d970re/nuphy_is_good_from_hw_perspective_but_not_from_sw/)
+- I do not know which firmware my keyboard is running
+
+### 2024-06-09 Firmware Update
+
+- since people seem to have had good results with custom firmware to fix the aforementioned issues, I decided to go with flashing custom QMK firmware
+- followed [this](https://www.reddit.com/r/NuPhy/comments/1bzohvx/custom_firmware/) reddit thread
+- flashed [v1.3.0.0](https://github.com/jincao1/qmk_firmware/releases/tag/v1.3.0.0) with QMK toolbox as described in NuPhy's [documentation](https://nuphy.com/pages/qmk-firmwares)
+  - binary can be found in this repository
+  - original [configuration JSON](https://github.com/jincao1/qmk_firmware/blob/v1.3.0.0/keyboards/nuphy/air75_v2/ansi/keymaps/via/air75_v2_via_v3.json) for VIA is included as well
+- updated VIA JSON with latest keymap added
+
