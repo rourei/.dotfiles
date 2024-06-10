@@ -2,6 +2,7 @@
 # see https://stackoverflow.com/a/18213120 for details
 alias replaceSpaces='for f in *\ *; do mv "$f" "${f// /_}"; done'
 alias la='ls -ACF'
+alias dateDir='mkdir $(date +%Y-%m-%d)'
 # Git
 # see https://stackoverflow.com/a/20499690 for details
 alias checkBranchState='git for-each-ref --format="%(refname:short) %(upstream:track) %(upstream:remotename)" refs/heads'
