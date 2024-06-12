@@ -55,6 +55,9 @@ augroup filetype_vim
 		autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
+" Toggle fold setting based on file length (see https://vi.stackexchange.com/a/44899)
+autocmd! BufRead * if line('$') < 100 | setlocal nofoldenable | else | setlocal foldenable | endif
+
 " }}}
 
 " STATUS LINE ------------------------------------------------------------ {{{
