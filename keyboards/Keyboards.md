@@ -2,6 +2,11 @@
 
 This directory contains all relevant files as well as additional information for my mechanical keyboards.
 
+## General Hints
+
+- On OS side, install the [EurKEY](https://eurkey.steffen.bruentjen.eu/start.html) layout which provides more reasonable access to special characters (esp. Umlaute) while being based on the ANSI layout
+  - available for Windows and MacOS via download, shipped with various Linux distros by default
+
 ## NuPhy Air75 V2
 
 ### Files
