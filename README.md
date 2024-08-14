@@ -9,5 +9,6 @@ Since I just got started with using *vim*, the contained `.vimrc` is also more o
 ## Content
 - `.vimrc`: Configuration for *vim*; currently without plugins or updated key bindings
 - `.vim/`: Directory containing plugins, custom additions to the spell check dictionary, etc.
+- `.printPath`: prints the `$PATH` variable one entry per line
 - `.print_format`: minimal example for a function that prints text in a predefined colour; can be sourced in bash scripts
 - `windowsterminal/settings.json`: Configuration for the Windows Terminal app from the Microsoft store
