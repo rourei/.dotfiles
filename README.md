@@ -11,4 +11,5 @@ Since I just got started with using *vim*, the contained `.vimrc` is also more o
 - `.vim/`: Directory containing plugins, custom additions to the spell check dictionary, etc.
 - `.printPath`: prints the `$PATH` variable one entry per line
 - `.print_format`: minimal example for a function that prints text in a predefined colour; can be sourced in bash scripts
+- `keyboards/`: Directory containing everything related to my mechanical keyboards (notes, information, VIA configurations, etc.)
 - `windowsterminal/settings.json`: Configuration for the Windows Terminal app from the Microsoft store
