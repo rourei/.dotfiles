@@ -3,12 +3,24 @@
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "actions": 
     [
-        {  "command": "toggleFocusMode",
-           "keys": "shift+f12"
+        {
+            "command": 
+            {
+                "action": "sendInput",
+                "input": "\u0017"
+            },
+            "keys": "ctrl+backspace"
         },
         {
-            "command": "paste",
-            "keys": "ctrl+v"
+            "command": "toggleFocusMode",
+            "keys": "shift+f12"
+        },
+        {
+            "command": 
+            {
+                "action": "quakeMode"
+            },
+            "keys": "win+esc"
         },
         {
             "command": 
@@ -19,16 +31,40 @@
             "keys": "ctrl+shift+e"
         },
         {
+            "command": "paste",
+            "keys": "ctrl+v"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "down"
+            },
+            "keys": "ctrl+shift+o"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+shift+minus"
+        },
+        {
+            "command": "unbound",
+            "keys": "alt+shift+plus"
+        },
+        {
+            "command": "unbound",
+            "keys": "win+sc(41)"
+        },
+        {
+            "command": "unbound",
+            "keys": "win+ctrl+alt+shift+9"
+        },
+        {
             "command": 
             {
                 "action": "copy",
                 "singleLine": false
             },
             "keys": "ctrl+c"
-        },
-        {
-            "command": "find",
-            "keys": "ctrl+shift+f"
         },
         {
             "command": 
@@ -40,28 +76,25 @@
             "keys": "alt+shift+d"
         },
         {
-            "command": "unbound",
-            "keys": "alt+shift+minus"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+shift+plus"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "down"
-            },
-            "keys": "ctrl+shift+o"
+            "command": "find",
+            "keys": "ctrl+shift+f"
         }
     ],
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{00000000-0000-0000-ba54-000000000002}",
+    "defaultProfile": "{e5a83caa-4c73-52b3-ae6b-bc438d721ef9}",
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
     "profiles": 
     {
-        "defaults": {},
+        "defaults": 
+        {
+            "startingDirectory": null
+        },
         "list": 
         [
             {
@@ -84,7 +117,6 @@
                 "bellStyle": "window",
                 "colorScheme": "Campbell",
                 "commandline": "%PROGRAMFILES%/git/usr/bin/bash.exe -i -l",
-                "elevate": false,
                 "experimental.retroTerminalEffect": false,
                 "font": 
                 {
@@ -98,16 +130,30 @@
                 "useAcrylic": false
             },
             {
+                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+                "hidden": false,
+                "name": "Git Bash",
+                "source": "Git"
+            },
+            {
+                "bellStyle": "window",
+                "colorScheme": "Tango Dark",
+                "experimental.retroTerminalEffect": false,
+                "font": 
+                {
+                    "size": 10.0
+                },
+                "guid": "{e5a83caa-4c73-52b3-ae6b-bc438d721ef9}",
+                "hidden": false,
+                "intenseTextStyle": "bold",
+                "name": "Ubuntu 22.04.3 LTS",
+                "source": "CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc"
+            },
+            {
                 "guid": "{17bf3de4-5353-5709-bcf9-835bd952a95e}",
                 "hidden": true,
                 "name": "Ubuntu-22.04",
                 "source": "Windows.Terminal.Wsl"
-            },
-            {
-                "guid": "{d7b20cea-47a9-518c-95a4-c8bd91e2e1c6}",
-                "hidden": false,
-                "name": "Ubuntu 22.04.2 LTS",
-                "source": "CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc"
             }
         ]
     },
