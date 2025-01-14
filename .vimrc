@@ -30,6 +30,13 @@ highlight clear SpellLocal
 
 " }}}
 
+" COMMANDS --------------------------------------------------------------- {{{
+
+:command Jsonf %!jq .
+
+" }}}
+
+
 " NAVIGATION ------------------------------------------------------------- {{{
 
 " Enable line numbers
