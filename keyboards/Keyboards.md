@@ -15,6 +15,7 @@ This directory contains all relevant files as well as additional information for
 - `NuPhy_Air75_V2_VIA_V3.json`: [VIA configuration](./nuphy/NuPhy_Air75_V2_VIA_V3.json) file for custom firmware
 - `NuPhy_Air75_V2_VIA_Configuration_Stock.json`: [Official VIA configuration JSON](./nuphy/NuPhy_Air75_V2_VIA_Configuration_Stock.json) from NuPhy's homepage
 - `nuphy_air75_v2.layout.json`: Latest [keymap](./nuphy/nuphy_air75_v2.layout.json)
+- `nuphy_air74_v2_hhkb.layout.json`: Current [keymap](./nuphy/nuphy_air75_v2_hhkb.layout.json) switching `CTRL` and `CapsLock`
 - `QMK_firmware_nuphy_air75_v2.1_ansi_v2.0.7.bin`: [Latest official firmware](./nuphy/QMK_firmware_nuphy_air75_v2.1_ansi_v2.0.7.bin) from Discord
   - only as a backup, never flashed to keyboard
 
