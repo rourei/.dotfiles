@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+#  Workaropund Git performance issue in NTFS filesystem according to https://github.com/microsoft/WSL/issues/440131
+function isWinDir {
+  case $PWD/ in
+    /mnt/*) return $(true);;
+    *) return $(false);;
+  esac
+}
+# Wrap the git command to either run Windows git or Linux version
+function git {
+  if isWinDir
+  then
+    git.exe "$@"
+  else
+    /usr/bin/git "$@"
+  fi
+}
+
