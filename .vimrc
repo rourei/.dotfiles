@@ -52,6 +52,12 @@ highlight clear CursorLine
 highlight CursorLineNR ctermbg=white
 highlight CursorLineNR ctermfg=black
 
+" Hard-wrap text at the configured long line limit
+" see https://stackoverflow.com/a/50415982
+set textwidth=100
+set wrap
+set linebreak
+
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
