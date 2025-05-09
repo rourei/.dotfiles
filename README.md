@@ -7,6 +7,7 @@ Obviously, this is merely a starting point and will hopefully grow soonish into 
 Since I just got started with using *vim*, the contained `.vimrc` is also more of a playground currently than a stable config. Let's see how this evolves!
 
 ## Content
+
 - `.vimrc`: Configuration for *vim*; currently without plugins or updated key bindings
 - `.vim/`: Directory containing plugins, custom additions to the spell check dictionary, etc.
   - the `indentline` plugin located in `/pack/` was originally obtained from
@@ -16,3 +17,9 @@ Since I just got started with using *vim*, the contained `.vimrc` is also more o
 - `.print_format`: minimal example for a function that prints text in a predefined colour; can be sourced in bash scripts
 - `keyboards/`: Directory containing everything related to my mechanical keyboards (notes, information, VIA configurations, etc.)
 - `windowsterminal/settings.json`: Configuration for the Windows Terminal app from the Microsoft store
+
+## Installation and Usage
+
+After checking out the project, Vim plugins need to be installed by opening Vim and running
+`:PlugInstall` once to download the plugins. They should be available after restart.
+
