@@ -111,3 +111,11 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
 " }}}
+
+" PLUGIN CONFIG ------------------------------------------------------------ {{{
+
+# Can be toggled manually with Shift + i
+let NERDTreeShowHidden=1
+
+" }}}
+
