@@ -114,7 +114,7 @@ call plug#end()
 
 " PLUGIN CONFIG ------------------------------------------------------------ {{{
 
-# Can be toggled manually with Shift + i
+" Can be toggled manually with Shift + i
 let NERDTreeShowHidden=1
 
 " }}}
