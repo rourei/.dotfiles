@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
-let g:netrw_dirhist_3='/mnt/c/_dev_ws/mscc/.git'
-let g:netrw_dirhist_2='/mnt/c/_dev_ws/lib/agv-type-api-library/.git'
-let g:netrw_dirhist_1='/mnt/c/_dev_ws/frontend-monorepo/.git'
