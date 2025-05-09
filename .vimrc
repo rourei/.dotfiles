@@ -95,3 +95,14 @@ set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c
 set laststatus=2
 
 " }}}
+
+" PLUGINS VIA VIM-PLUG ------------------------------------------------------------ {{{
+
+call plug#begin()
+
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+call plug#end()
+
+" }}}
