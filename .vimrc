@@ -36,6 +36,11 @@ highlight clear SpellLocal
 
 " }}}
 
+" KEY MAPPINGS --------------------------------------------------------------- {{{
+
+map <F2> :NERDTreeToggle<CR>
+
+" }}}
 
 " NAVIGATION ------------------------------------------------------------- {{{
 
@@ -95,3 +100,22 @@ set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c
 set laststatus=2
 
 " }}}
+
+" PLUGINS VIA VIM-PLUG ------------------------------------------------------------ {{{
+
+call plug#begin()
+
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+call plug#end()
+
+" }}}
+
+" PLUGIN CONFIG ------------------------------------------------------------ {{{
+
+" Can be toggled manually with Shift + i
+let NERDTreeShowHidden=1
+
+" }}}
+
