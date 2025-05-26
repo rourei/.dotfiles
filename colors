@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# Color Codes 
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+MAGENTA='\033[0;35m'
+CYAN='\033[0;36m'
+WHITE='\033[0;37m'
+
+# Formatting Options 
+BOLD='\033[1m'
+UNDERLINE='\033[4m'
+# Reset
+NC='\033[0m'
+
+# Utility functions for colored output 
+info() {
+  echo -e "${WHITE}[INFO]${NC} $1"
+}
+
+success() {
+  echo -e "${GREEN}[OK]${NC} $1"
+}
+
+warn() {
+  echo -e "${YELLOW}[WARN]${NC} $1"
+}
+
+error() {
+  echo -e "${RED}[ERROR]${NC} $1"
+}
+
+note() {
+  echo -e "${MAGENTA}[NOTE]${NC} $1"
+}
+
+infoBold() {
+  echo -e "${BOLD}[INFO]${NC}  $1"
+}
+
