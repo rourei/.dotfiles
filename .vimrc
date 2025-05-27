@@ -33,6 +33,7 @@ highlight clear SpellLocal
 " COMMANDS --------------------------------------------------------------- {{{
 
 :command Jsonf %!jq .
+:command Bs :normal! 0i#!/usr/bin/env bash<ESC>
 
 " }}}
 
