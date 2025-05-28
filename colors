@@ -40,3 +40,7 @@ infoBold() {
   echo -e "${BOLD}[INFO]${NC}  $1"
 }
 
+print() {
+  echo -e "$1$2${NC}"
+}
+
