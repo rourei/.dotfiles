@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+source ./colors
+
+# Variables
+unset -v email
+unset -v suffix
+
+# SSH configuration
+add_ssh_key_and_print_public_key() {
+  local email="$1"
+  local suffix="$2"
+  local filename="$HOME/.ssh/id_ed25519$suffix"
+
+  if [[ -f $filename ]]; then
+    error "Target file $filename already exists." >&2
+    exit 1
+  fi
+
+  cd
+  info "Generating SSH key for $email under $filename."
+  ssh-keygen -t ed25519 -C $email"" -f $filename
+  eval "$(ssh-agent -s)"
+  ssh-add $filename 
+
+  local public_key=$( cat "${filename}.pub" )
+  info "Your public key is:"
+  info "$public_key"
+}
+
+_help()
+{
+  echo "This script creates a new SSH key with the provided email address as comment."
+  echo "Additionally, an optional suffix for the file name of the key can be provided."
+  echo
+  echo "Syntax: add_ssh_key [-h|e|s]"
+  echo "Options:"
+  echo "  -h    Print this help"
+  echo "  -e    Specify the email address"
+  echo "  -s    Specify the (optional) file suffix."
+  echo
+}
+
+# === MAIN === 
+while getopts ":he:s:" option; do
+  case $option in
+    h) _help
+       exit;;
+    e) email=$OPTARG;;
+    s) suffix=$OPTARG;;
+   \?) echo "Error: Invalid option"
+       exit;;
+  esac
+done
+
+if [[ -z "$email" ]]; then
+  error "Missing required email address. Please provide it using the flag -e." >&2
+  exit 1
+fi
+
+if [[ -z "$suffix" ]]; then
+  info "No suffix provided. Generating with default filename."
+else
+  suffix="_$suffix"
+fi
+
+add_ssh_key_and_print_public_key $email $suffix
+
