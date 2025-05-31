@@ -14,8 +14,6 @@
 # 
 # TODO: configure mail and name as arguments to enable pushing it to GitHub? 
 # TODO: Create .bash_aliases and source .generic_aliases from dotfiles
-# TODO: cat public GitHub SSH key and wait for any key to continue (otherwise pulling via SSH won't
-#       work) -> enables adding the key to be added to GitHub while the script is paused
 
 # Update existing packages and install commonly used ones
 _update_and_install_general_packages() {
