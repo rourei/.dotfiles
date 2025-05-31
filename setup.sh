@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
-# Creates a basic usable Linux installation by installing necessary packages and initializing
+# Configures a fresh Ubuntu installation by installing necessary packages and initializing
 # general configurations such as Git, SSH keys and dotfile setup.
 
 source ./colors
+
+# Variables
+unset -v email
+unset -v name
+unset -v suffix
 
 # TODO: adapt PS1 definition to show branch name in prompt (potentially not in this script)
 # Replace existing definition in bashrc with the following: 
@@ -17,8 +22,21 @@ source ./colors
 # PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
 #fi
 # 
-# TODO: configure mail and name as arguments to enable pushing it to GitHub? 
 # TODO: Create .bash_aliases and source .generic_aliases from dotfiles
+
+_help()
+{
+  echo "This scripts configures a fresh installation of Ubuntu with the basic necessities such as:"
+  echo "relevant packages, Git configuration, SSH keys, etc."
+  echo
+  echo "Syntax: options.sh [-h|e|n]"
+  echo "Options:"
+  echo "  -h    Print this help"
+  echo "  -e    Specify the email address to be used for configuration"
+  echo "  -n    Specify the name of the user for which the configuration is created"
+  echo "  -s    Specify the file suffix that will be used for the SSH key pair"
+  echo
+}
 
 # Update existing packages and install commonly used ones
 _update_and_install_general_packages() {
@@ -46,26 +64,55 @@ _install_packages_for_native_installation() {
 
 # Common Git configuration
 _configure_git() {
+  local user_name=$1
+  local user_email=$2
+
   info "Configure Git installation."
-  git config --global user.name "Firstname Lastname"
-  git config --global user.email "mail@mail.com"
+  git config --global user.name $user_name
+  git config --global user.email $user_email
   git config --global core.autocrlf false
   git config --gloabl core.symlinks true
   git config --global core.editor vim
   git config --global init.defaultBranch main
 }
 
-# SSH configuration
-_add_ssh_key() {
+_clone_dotfiles_and_symlink() {
+  info "Clone dotfiles and create relevant symLinks."
   cd
-  ssh-keygen -t ed25519 -C "mail@mail.com"
-  eval "$(ssh-agent -s)"
-  ssh-add ~/.ssh/id_ed25519_github
+  git clone git@github.com:rourei/.dotfiles.git
+  ln -s .dotfiles/.vimrc .vimrc
+  ln -s .dotfiles/.vim .vim
 }
 
-info "Clone dotfiles and create relevant symLinks."
-cd
-git clone git@github.com:rourei/.dotfiles.git
-ln -s .dotfiles/.vimrc .vimrc
-ln -s .dotfiles/.vim .vim
+main() {
+  while getopts ":he:n:s:" option; do
+    case $option in
+      h) _help
+         exit;;
+      e) email=$OPTARG;;
+      n) name=$OPTARG;;
+      s) suffix=$OPTARG;;
+     \?) echo "Error: Invalid option"
+         return 1
+         ;;
+    esac
+  done
+
+  if [[ -z "$email" ]] || [[ -z "$name" ]]; then
+    error "Missing required arguments. Please provide an email address (-e) and a name (-n)." >&2
+    exit 1
+  fi
+
+  cd # start from home directory
+  _update_and_install_general_packages
+  _install_packages_for_native_installation
+  _configure_git $name $email
+  add_ssh_key_and_print_public_key $email $suffix
+
+  read -p "Please add the public SSH key to your account. Press Enter when done." </dev/tty
+
+  _clone_dotfiles_and_symlink
+}
+
+main "@"
 
