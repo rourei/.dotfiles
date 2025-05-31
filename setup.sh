@@ -27,9 +27,9 @@ _update_and_install_general_packages() {
 
 # Packages that are only necessary for a non-WSL installation
 _install_packages_for_native_installation() {
-  WSL_CONFIG_FILE=/proc/sys/fs/binfmt_misc/WSLInterop
+  local wsl_config_file=/proc/sys/fs/binfmt_misc/WSLInterop
 
-  if ! [ -f "$WSL_CONFIG_FILE" ]; then
+  if ! [[ -f "$wsl_config_file" ]]; then
     # Necessary to enable the EurKey layout
     sudo apt install gnome-tweaks
   fi
