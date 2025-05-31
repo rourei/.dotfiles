@@ -60,7 +60,8 @@ while getopts ":he:s:" option; do
     e) email=$OPTARG;;
     s) suffix=$OPTARG;;
    \?) echo "Error: Invalid option"
-       exit;;
+       return 1
+       ;;
   esac
 done
 
