@@ -29,6 +29,7 @@ _update_and_install_general_packages() {
   sudo apt install vim
   sudo apt install git
   sudo apt install htop
+  sudo apt install jq
 }
 
 # Packages that are only necessary for a non-WSL installation
@@ -49,6 +50,7 @@ _configure_git() {
   git config --global user.name "Firstname Lastname"
   git config --global user.email "mail@mail.com"
   git config --global core.autocrlf false
+  git config --gloabl core.symlinks true
   git config --global core.editor vim
   git config --global init.defaultBranch main
 }
