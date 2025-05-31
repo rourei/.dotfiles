@@ -1,12 +1,23 @@
 #!/usr/bin/env bash
 
+# Creates a new SSH key pair with a configurable file suffix and email address as comment.
+
 source ./colors
 
 # Variables
 unset -v email
 unset -v suffix
 
-# SSH configuration
+#############################################################
+# Creates a new SSH key and outputs the resulting public key.
+# Arguments:
+#   Email address to use as comment for the key.
+#   File suffix for the resulting key files.
+# Outputs:
+#   Writes public key to stdout.
+# Returns:
+#   0 if SSH key pair was created, non-zero on error.
+#############################################################
 add_ssh_key_and_print_public_key() {
   local email="$1"
   local suffix="$2"
