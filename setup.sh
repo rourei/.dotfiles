@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Creates a basic usable Linux installation by installing necessary packages and initializing
+# general configurations such as Git, SSH keys and dotfile setup.
+
+source ./colors
+
 # TODO: adapt PS1 definition to show branch name in prompt (potentially not in this script)
 # Replace existing definition in bashrc with the following: 
 ## Add git branch if its present to PS1
@@ -17,6 +22,7 @@
 
 # Update existing packages and install commonly used ones
 _update_and_install_general_packages() {
+  info "Update apt and install necessary packages."
   sudo apt update
   sudo apt upgrade
   sudo apt install terminator
@@ -27,6 +33,8 @@ _update_and_install_general_packages() {
 
 # Packages that are only necessary for a non-WSL installation
 _install_packages_for_native_installation() {
+  info "Install packages for native installation if applicable."
+
   local wsl_config_file=/proc/sys/fs/binfmt_misc/WSLInterop
 
   if ! [[ -f "$wsl_config_file" ]]; then
@@ -37,6 +45,7 @@ _install_packages_for_native_installation() {
 
 # Common Git configuration
 _configure_git() {
+  info "Configure Git installation."
   git config --global user.name "Firstname Lastname"
   git config --global user.email "mail@mail.com"
   git config --global core.autocrlf false
@@ -52,6 +61,7 @@ _add_ssh_key() {
   ssh-add ~/.ssh/id_ed25519_github
 }
 
+info "Clone dotfiles and create relevant symLinks."
 cd
 git clone git@github.com:rourei/.dotfiles.git
 ln -s .dotfiles/.vimrc .vimrc
