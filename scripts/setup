@@ -48,19 +48,9 @@ _update_and_install_general_packages() {
   sudo apt install git
   sudo apt install htop
   sudo apt install jq
-}
-
-# Packages that are only necessary for a non-WSL installation
-_install_packages_for_native_installation() {
-  info "Install packages for native installation if applicable."
-
-  local wsl_config_file=/proc/sys/fs/binfmt_misc/WSLInterop
-
-  if [[ ! -f "$wsl_config_file" ]]; then
-    # Necessary to enable the EurKey layout
-    sudo apt install gnome-tweaks
-    sudo apt install terminator
-  fi
+  # Necessary to enable the EurKey layout
+  sudo apt install gnome-tweaks
+  sudo apt install terminator
 }
 
 # Common Git configuration
@@ -114,7 +104,6 @@ main() {
 
   cd # start from home directory
   _update_and_install_general_packages
-  _install_packages_for_native_installation
   _configure_git $name $email
   add_ssh_key_and_print_public_key $email $suffix
 
