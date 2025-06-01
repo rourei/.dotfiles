@@ -9,6 +9,7 @@ source ./colors
 unset -v email
 unset -v name
 unset -v suffix
+CONFIG_DIR="$HOME/.config"
 
 # TODO: adapt PS1 definition to show branch name in prompt (potentially not in this script)
 # Replace existing definition in bashrc with the following: 
@@ -43,7 +44,6 @@ _update_and_install_general_packages() {
   info "Update apt and install necessary packages."
   sudo apt update
   sudo apt upgrade
-  sudo apt install terminator
   sudo apt install vim
   sudo apt install git
   sudo apt install htop
@@ -56,9 +56,10 @@ _install_packages_for_native_installation() {
 
   local wsl_config_file=/proc/sys/fs/binfmt_misc/WSLInterop
 
-  if ! [[ -f "$wsl_config_file" ]]; then
+  if [[ ! -f "$wsl_config_file" ]]; then
     # Necessary to enable the EurKey layout
     sudo apt install gnome-tweaks
+    sudo apt install terminator
   fi
 }
 
@@ -78,10 +79,17 @@ _configure_git() {
 
 _clone_dotfiles_and_symlink() {
   info "Clone dotfiles and create relevant symLinks."
+
+  if [[ ! -d "$CONFIG_DIR" ]]; then
+    info "Configuration directory does not exist yet. Creating under $CONFIG_DIR."
+    mkdir $CONFIG_DIR
+  fi
+
   cd
   git clone git@github.com:rourei/.dotfiles.git
   ln -s .dotfiles/.vimrc .vimrc
   ln -s .dotfiles/.vim .vim
+  ln -s .dotfiles/config/terminator/ .config/terminator
 }
 
 main() {
