@@ -1,0 +1,27 @@
+[global_config]
+  inactive_color_offset = 0.6111111111111112
+[keybindings]
+  hide_window = <Primary>Escape
+[profiles]
+  [[default]]
+    backspace_binding = automatic
+    delete_binding = ascii-del
+    font = Ubuntu Sans Mono 12
+    use_system_font = False
+  [[Light]]
+    background_color = "#fdf6e3"
+    font = Ubuntu Sans Mono 12
+    foreground_color = "#657b83"
+    palette = "#fbf1c7:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#7c6f64:#928374:#9d0006:#79740e:#b57614:#076678:#8f3f71:#427b58:#3c3836"
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+      size = 900, 400
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+[plugins]
