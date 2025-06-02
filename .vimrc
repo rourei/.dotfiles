@@ -40,6 +40,7 @@ highlight clear SpellLocal
 " KEY MAPPINGS --------------------------------------------------------------- {{{
 
 map <F2> :NERDTreeToggle<CR>
+imap <C-H> <C-W>
 
 " }}}
 
