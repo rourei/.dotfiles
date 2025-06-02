@@ -11,7 +11,6 @@ unset -v name
 unset -v suffix
 CONFIG_DIR="$HOME/.config"
 
-# TODO: adapt PS1 definition to show branch name in prompt (potentially not in this script)
 # TODO: Create .bash_aliases and source .generic_aliases from dotfiles
 
 _help()
@@ -26,6 +25,11 @@ _help()
   echo "  -n    Specify the name of the user for which the configuration is created"
   echo "  -s    Specify the file suffix that will be used for the SSH key pair"
   echo
+}
+
+_wait_for_user() {
+  local message=$1
+  read -p "$message" </dev/tty
 }
 
 # Update existing packages and install commonly used ones
@@ -71,6 +75,16 @@ _clone_dotfiles_and_symlink() {
   ln -s .dotfiles/config/terminator/ .config/terminator
 }
 
+_print_ps1_definition() {
+  note "Manual step required: updating the PS1 defintion to include the current branch."
+  note "Please replace the existing definition in the .bashrc with:"
+  note "### Beginning of PS1 definition ###"
+  echo
+  cat ./assets/ps1_definition_with_git_support
+  echo
+  note "### End of PS1 definition ###"
+}
+
 main() {
   while getopts ":he:n:s:" option; do
     case $option in
@@ -93,11 +107,13 @@ main() {
   cd # start from home directory
   _update_and_install_general_packages
   _configure_git $name $email
-  add_ssh_key_and_print_public_key $email $suffix
 
-  read -p "Please add the public SSH key to your account. Press Enter when done." </dev/tty
+  add_ssh_key_and_print_public_key $email $suffix
+  _wait_for_user "Please add the public SSH key to your account. Press Enter when done."
 
   _clone_dotfiles_and_symlink
+  _print_ps1_definition
+  _wait_for_user "Press enter when the PS1 definition has been updated."
 }
 
 main "@"
