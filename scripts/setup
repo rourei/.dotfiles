@@ -37,8 +37,7 @@ _update_and_install_general_packages() {
   sudo apt install git
   sudo apt install htop
   sudo apt install jq
-  # Necessary to enable the EurKey layout
-  sudo apt install gnome-tweaks
+  sudo apt install gnome-tweaks # Necessary to enable the EurKey layout
   sudo apt install terminator
 }
 
