@@ -10,6 +10,7 @@ unset -v email
 unset -v name
 unset -v suffix
 CONFIG_DIR="$HOME/.config"
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 # TODO: Create .bash_aliases and source .generic_aliases from dotfiles
 
@@ -75,6 +76,17 @@ _clone_dotfiles_and_symlink() {
   ln -s .dotfiles/config/terminator/ .config/terminator
 }
 
+_add_scripts_to_path() {
+  info "Appending /scripts directory to path."
+
+  if [[ ! -f $HOME/.bashrc ]]; then
+    touch $HOME/.bashrc
+  fi
+
+  echo "# User additions" >> $HOME/.bashrc
+  echo "export PATH=\$PATH:$SCRIPT_DIR" >> $HOME/.bashrc
+}
+
 _print_ps1_definition() {
   note "Manual step required: updating the PS1 defintion to include the current branch."
   note "Please replace the existing definition in the .bashrc with:"
@@ -112,6 +124,7 @@ main() {
   _wait_for_user "Please add the public SSH key to your account. Press Enter when done."
 
   _clone_dotfiles_and_symlink
+  _add_scripts_to_path
   _print_ps1_definition
   _wait_for_user "Press enter when the PS1 definition has been updated."
 }
