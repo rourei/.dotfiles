@@ -31,7 +31,11 @@ _wait_for_user() {
   read -p "$message" </dev/tty
 }
 
-# Update existing packages and install commonly used ones
+#############################################################
+# Updates existing packages and installs commonly used ones.
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
 _update_and_install_general_packages() {
   info "Update apt and install necessary packages."
   sudo apt update
@@ -45,12 +49,26 @@ _update_and_install_general_packages() {
   info "Packages have been updated and installed successfully."
 }
 
+#############################################################
+# Changes configuration to interpret RTC in local time.
+# This is usually only necessary for dual boot setups.
+# However, this is the main setup that I use.
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
 _configure_rtc() {
   info "Configuring RTC interpretation to use local time."
   timedatectl set-local-rtc 1
 }
 
-# Common Git configuration
+#############################################################
+# Configures git with commonly used settings.
+# Arguments:
+#   Name to be used as user name.
+#   Email address to use as user mail address.
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
 _configure_git() {
   local user_name=$1
   local user_email=$2
@@ -65,6 +83,14 @@ _configure_git() {
   info "Git configuration complete."
 }
 
+#############################################################
+# Clones the dotfile repository and symlinks all relevant
+# files.
+# Globals:
+#   CONFIG_DIR
+# Outputs: 
+#   Writes log output to stdout.
+#############################################################
 _clone_dotfiles_and_symlink() {
   info "Clone dotfiles and create relevant symLinks."
 
@@ -83,6 +109,15 @@ _clone_dotfiles_and_symlink() {
   info "Dotfile setup complete."
 }
 
+#############################################################
+# Adds scripts/ from the dotfiles repository to the path.
+# In order to do this, the .bashrc is created in case it
+# does not yet exist.
+# Globals:
+#   SCRIPT_DIR
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
 _add_scripts_to_path() {
   info "Appending /scripts directory to path."
 
@@ -97,6 +132,14 @@ _add_scripts_to_path() {
   info "Successfully added contained scripts to path."
 }
 
+#############################################################
+# Adds shared aliases from dotfiles to local .bash_aliases.
+# In case that file does not yet exist, it will be created.
+# Globals:
+#   SCRIPT_DIR
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
 _configure_aliases() {
   info "Configuring aliases."
 
@@ -111,6 +154,12 @@ _configure_aliases() {
   note "Added shared aliases. Please check if .bash_aliases is sourced in .bashrc"
 }
 
+#############################################################
+# Ouputs the PS1 definition that supports rendering the
+# current git branch.
+# Outputs:
+#  Writes PS1 definition and log output to stdout.
+#############################################################
 _print_ps1_definition() {
   note "Manual step required: updating the PS1 defintion to include the current branch."
   note "Please replace the existing definition in the .bashrc with:"
