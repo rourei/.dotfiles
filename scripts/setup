@@ -12,8 +12,6 @@ unset -v suffix
 CONFIG_DIR="$HOME/.config"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-# TODO: Create .bash_aliases and source .generic_aliases from dotfiles
-
 _help()
 {
   echo "This scripts configures a fresh installation of Ubuntu with the basic necessities such as:"
@@ -80,11 +78,26 @@ _add_scripts_to_path() {
   info "Appending /scripts directory to path."
 
   if [[ ! -f $HOME/.bashrc ]]; then
+    info "Bashrc did not yet exist. Creating new."
     touch $HOME/.bashrc
   fi
 
   echo "# User additions" >> $HOME/.bashrc
   echo "export PATH=\$PATH:$SCRIPT_DIR" >> $HOME/.bashrc
+}
+
+_configure_aliases() {
+  info "Configuring aliases."
+
+  if [[ ! -f $HOME/.bash_aliases ]]; then
+    info ".bash_aliases does not exist. Creating new."
+    touch $HOME/.bash_aliases
+    echo "#!/usr/bin/env bash" >> $HOME/.bash_aliases
+    echo >> $HOME/.bash_aliases
+  fi
+
+  echo "source $SCRIPT_DIR/.aliases" >> $HOME/.bash_aliases
+  note "Added shared aliases. Please check if .bash_aliases is sourced in .bashrc"
 }
 
 _print_ps1_definition() {
@@ -125,8 +138,11 @@ main() {
 
   _clone_dotfiles_and_symlink
   _add_scripts_to_path
+  _configure_aliases
   _print_ps1_definition
-  _wait_for_user "Press enter when the PS1 definition has been updated."
+  _wait_for_user "Press Enter when the PS1 definition has been updated."
+
+  info "Setup completed successfully."
 }
 
 main "@"
