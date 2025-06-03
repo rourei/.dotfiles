@@ -42,6 +42,7 @@ _update_and_install_general_packages() {
   sudo apt install jq
   sudo apt install gnome-tweaks # Necessary to enable the EurKey layout
   sudo apt install terminator
+  info "Packages have been updated and installed successfully."
 }
 
 # Common Git configuration
@@ -56,6 +57,7 @@ _configure_git() {
   git config --gloabl core.symlinks true
   git config --global core.editor vim
   git config --global init.defaultBranch main
+  info "Git configuration complete."
 }
 
 _clone_dotfiles_and_symlink() {
@@ -72,6 +74,8 @@ _clone_dotfiles_and_symlink() {
   ln -s .dotfiles/.vim .vim
   ln -s .dotfiles/config/.inputrc .inputrc
   ln -s .dotfiles/config/terminator/ .config/terminator
+
+  info "Dotfile setup complete."
 }
 
 _add_scripts_to_path() {
@@ -84,6 +88,8 @@ _add_scripts_to_path() {
 
   echo "# User additions" >> $HOME/.bashrc
   echo "export PATH=\$PATH:$SCRIPT_DIR" >> $HOME/.bashrc
+
+  info "Successfully added contained scripts to path."
 }
 
 _configure_aliases() {
