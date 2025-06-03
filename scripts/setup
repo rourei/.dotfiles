@@ -45,6 +45,11 @@ _update_and_install_general_packages() {
   info "Packages have been updated and installed successfully."
 }
 
+_configure_rtc() {
+  info "Configuring RTC interpretation to use local time."
+  timedatectl set-local-rtc 1
+}
+
 # Common Git configuration
 _configure_git() {
   local user_name=$1
@@ -137,6 +142,7 @@ main() {
 
   cd # start from home directory
   _update_and_install_general_packages
+  _configure_rtc
   _configure_git $name $email
 
   add_ssh_key_and_print_public_key $email $suffix
