@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # General
 # see https://stackoverflow.com/a/18213120 for details
 alias replaceSpaces='for f in *\ *; do mv "$f" "${f// /_}"; done'
