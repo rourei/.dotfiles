@@ -30,7 +30,7 @@ add_ssh_key_and_print_public_key() {
 
   cd
   info "Generating SSH key for $email under $filename."
-  ssh-keygen -t ed25519 -C $email"" -f $filename
+  ssh-keygen -t ed25519 -C $email -f $filename
   eval "$(ssh-agent -s)"
   ssh-add $filename 
 
