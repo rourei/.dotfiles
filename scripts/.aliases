@@ -6,9 +6,13 @@ alias replaceSpaces='for f in *\ *; do mv "$f" "${f// /_}"; done'
 alias dateDir='mkdir $(date +%Y-%m-%d)'
 
 alias la='ls -ACF'
+
+# Directory Navigation
 alias ..='cd ..'
 alias ...='cd ../..'
+alias dotfiles='cd $HOME/.dotfiles'
 
 # Git
 # see https://stackoverflow.com/a/20499690 for details
 alias checkBranchState='git for-each-ref --format="%(refname:short) %(upstream:track) %(upstream:remotename)" refs/heads'
+alias gcam='git commit -am'
