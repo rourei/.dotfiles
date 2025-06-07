@@ -8,7 +8,7 @@ source ./colors
 # Variables
 unset -v email
 unset -v name
-unset -v suffix
+unset -v ssh_key_suffix
 CONFIG_DIR="$HOME/.config"
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
@@ -176,7 +176,7 @@ main() {
          exit;;
       e) email=$OPTARG;;
       n) name=$OPTARG;;
-      s) suffix=$OPTARG;;
+      s) ssh_key_suffix=$OPTARG;;
      \?) echo "Error: Invalid option"
          return 1
          ;;
@@ -193,7 +193,7 @@ main() {
   _configure_rtc
   _configure_git $name $email
 
-  add_ssh_key_and_print_public_key $email $suffix
+  add_ssh_key_and_print_public_key $email $ssh_key_suffix
   _wait_for_user "Please add the public SSH key to your account. Press Enter when done."
 
   _clone_dotfiles_and_symlink
