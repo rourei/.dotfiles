@@ -147,11 +147,9 @@ _configure_aliases() {
   if [[ ! -f $HOME/.bash_aliases ]]; then
     info ".bash_aliases does not exist. Creating new."
     touch $HOME/.bash_aliases
-    echo "#!/usr/bin/env bash" >> $HOME/.bash_aliases
-    echo >> $HOME/.bash_aliases
   fi
 
-  echo "source $SCRIPT_DIR/.aliases" >> $HOME/.bash_aliases
+  echo "source $SCRIPT_DIR/aliases" >> $HOME/.bash_aliases
   note "Added shared aliases. Please check if .bash_aliases is sourced in .bashrc"
 }
 
