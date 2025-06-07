@@ -14,7 +14,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 _help()
 {
-  echo "This scripts configures a fresh installation of Ubuntu with the basic necessities such as:"
+  echo "This script configures a fresh installation of Ubuntu with the basic necessities such as:"
   echo "relevant packages, Git configuration, SSH keys, etc."
   echo
   echo "Syntax: options.sh [-h|e|n]"
