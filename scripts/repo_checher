@@ -1,5 +1,7 @@
 git_check()
 {
     git remote update
-    get status -suno
+    git status -suno
 }
+
+git_check
