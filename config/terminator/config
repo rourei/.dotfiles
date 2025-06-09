@@ -6,7 +6,7 @@
   [[default]]
     backspace_binding = automatic
     delete_binding = ascii-del
-    font = Ubuntu Sans Mono 12
+    font = Ubuntu Sans Mono 11
     use_system_font = False
   [[Light]]
     background_color = "#fdf6e3"
