@@ -44,7 +44,7 @@ _help()
   echo "This script creates a new SSH key with the provided email address as comment."
   echo "Additionally, an optional suffix for the file name of the key can be provided."
   echo
-  echo "Syntax: add_ssh_key [-h|e|s]"
+  echo "Syntax: add_ssh_key -[h|e|s]"
   echo "Options:"
   echo "  -h    Print this help"
   echo "  -e    Specify the email address"
