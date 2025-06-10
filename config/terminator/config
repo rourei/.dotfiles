@@ -4,8 +4,6 @@
   hide_window = <Primary>Escape
 [profiles]
   [[default]]
-    backspace_binding = automatic
-    delete_binding = ascii-del
     font = Ubuntu Sans Mono 11
     use_system_font = False
   [[Light]]
