@@ -1,4 +1,6 @@
 [global_config]
+  always_on_top = True
+  sticky = True
   inactive_color_offset = 0.6111111111111112
 [keybindings]
   hide_window = <Primary>Escape
