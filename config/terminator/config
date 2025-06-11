@@ -8,12 +8,14 @@
   [[default]]
     font = Ubuntu Sans Mono 11
     use_system_font = False
+    title_hide_sizetext = True
   [[Light]]
     background_color = "#fdf6e3"
-    font = Ubuntu Sans Mono 12
+    font = Ubuntu Sans Mono 11
     foreground_color = "#657b83"
     palette = "#fbf1c7:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#7c6f64:#928374:#9d0006:#79740e:#b57614:#076678:#8f3f71:#427b58:#3c3836"
     use_system_font = False
+    title_hide_sizetext = True
 [layouts]
   [[default]]
     [[[window0]]]
