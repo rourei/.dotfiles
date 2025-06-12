@@ -81,6 +81,7 @@ _configure_git() {
   git config --gloabl core.symlinks true
   git config --global core.editor vim
   git config --global init.defaultBranch main
+  git config --global pull.rebase false
   info "Git configuration complete."
 }
 
