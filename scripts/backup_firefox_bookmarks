@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Script to backup existing Firefox bookmarks from given profile to configurable target location
+# (has to be a Git repository).
+# Requires Firefox to be configured to automatically export bookmarks when being closed,
+# see https://askubuntu.com/a/1438114 for reference.
+
 source ./colors
 
 PROFILE_LOCATION="<PATH_TO_FIREFOX_PROFILE"
