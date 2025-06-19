@@ -53,3 +53,6 @@ config
 cookiecutter
 RTC
 Base64
+monorepo
+Jira
+DefectDojo
