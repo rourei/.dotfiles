@@ -3,14 +3,16 @@
 # Configures a fresh Ubuntu installation by installing necessary packages and initializing
 # general configurations such as Git, SSH keys and dotfile setup.
 
-source ./colors
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$SCRIPT_DIR/colors"
+source "$SCRIPT_DIR/functions/ssh_key_functions"
 
 # Variables
 unset -v email
 unset -v name
 unset -v ssh_key_suffix
 CONFIG_DIR="$HOME/.config"
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 _help()
 {
