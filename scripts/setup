@@ -39,14 +39,14 @@ _wait_for_user() {
 _update_and_install_general_packages() {
   info "Update apt and install necessary packages."
   sudo apt update
-  sudo apt upgrade
-  sudo apt install vim
-  sudo apt install git
-  sudo apt install htop
-  sudo apt install jq
-  sudo apt install gnome-tweaks # Necessary to enable the EurKey layout
-  sudo apt install terminator
-  sudo apt install tree
+  sudo apt -y upgrade
+  sudo apt -y install vim
+  sudo apt -y install git
+  sudo apt -y install htop
+  sudo apt -y install jq
+  sudo apt -y install gnome-tweaks # Necessary to enable the EurKey layout
+  sudo apt -y install terminator
+  sudo apt -y install tree
   info "Packages have been updated and installed successfully."
 }
 
