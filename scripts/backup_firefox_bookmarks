@@ -5,7 +5,9 @@
 # Requires Firefox to be configured to automatically export bookmarks when being closed,
 # see https://askubuntu.com/a/1438114 for reference.
 
-source ./colors
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source $SCRIPT_DIR/colors
 
 PROFILE_LOCATION="<PATH_TO_FIREFOX_PROFILE"
 BACKUP_LOCATION="<PATH_TO_BACKUP_LOCATION"
