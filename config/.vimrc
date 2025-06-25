@@ -39,8 +39,11 @@ highlight clear SpellLocal
 
 " KEY MAPPINGS --------------------------------------------------------------- {{{
 
-map <F2> :NERDTreeToggle<CR>
+" General
 imap <C-H> <C-W>
+inoremap jk <Esc>
+" Plugins
+map <F2> :NERDTreeToggle<CR>
 
 " }}}
 
