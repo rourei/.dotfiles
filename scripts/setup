@@ -211,6 +211,9 @@ main() {
   _print_ps1_definition
   _wait_for_user "Press Enter when the PS1 definition has been updated."
 
+  info "Sourcing bashrc to enable new aliases and use updated path."
+  source "$HOME/.bashrc"
+
   info "Setup completed successfully."
 }
 
