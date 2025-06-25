@@ -4,6 +4,7 @@
 # general configurations such as Git, SSH keys and dotfile setup.
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DOTFILE_DIR=$HOME/.dotfiles
 
 source "$SCRIPT_DIR/colors"
 source "$SCRIPT_DIR/functions/ssh_key_functions"
@@ -104,11 +105,11 @@ _clone_dotfiles_and_symlink() {
   fi
 
   cd
-  git clone git@github.com:rourei/.dotfiles.git
-  ln -s .dotfiles/config/.vimrc .vimrc
-  ln -s .dotfiles/config/.vim .vim
-  ln -s .dotfiles/config/.inputrc .inputrc
-  ln -s .dotfiles/config/terminator/ .config/terminator
+  git clone git@github.com:rourei/.dotfiles.git $DOTFILE_DIR
+  ln -s $DOTFILE_DIR/config/.vimrc $HOME/.vimrc
+  ln -s $DOTFILE_DIR/config/.vim $HOME/.vim
+  ln -s $DOTFILE_DIR/config/.inputrc $HOME/.inputrc
+  ln -s $DOTFILE_DIR/config/terminator/ $HOME/.config/terminator
 
   info "Dotfile setup complete."
 }
@@ -131,7 +132,7 @@ _add_scripts_to_path() {
   fi
 
   echo "# User additions" >> $HOME/.bashrc
-  echo "export PATH=\$PATH:$SCRIPT_DIR" >> $HOME/.bashrc
+  echo "export PATH=\$PATH:$DOTFILE_DIR" >> $HOME/.bashrc
 
   info "Successfully added contained scripts to path."
 }
@@ -152,7 +153,7 @@ _configure_aliases() {
     touch $HOME/.bash_aliases
   fi
 
-  echo "source $SCRIPT_DIR/aliases" >> $HOME/.bash_aliases
+  echo "source $DOTFILE_DIR/scripts/aliases" >> $HOME/.bash_aliases
   note "Added shared aliases. Please check if .bash_aliases is sourced in .bashrc"
 }
 
@@ -188,6 +189,11 @@ main() {
 
   if [[ -z "$email" ]] || [[ -z "$name" ]]; then
     error "Missing required arguments. Please provide an email address (-e) and a name (-n)." >&2
+    exit 1
+  fi
+
+  if [[ -d $DOTFILE_DIR ]];; then
+    error "Dotilfe target directory $DOTFILE_DIR already exits." >&2
     exit 1
   fi
 
