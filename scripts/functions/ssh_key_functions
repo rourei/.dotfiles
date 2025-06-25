@@ -17,6 +17,24 @@ source "$SCRIPT_DIR/../colors"
 add_ssh_key_and_print_public_key() {
   local email="$1"
   local suffix="$2"
+
+  if [[ -z "$email" ]]; then
+    error "Missing required email address. Aborting." >&2
+    exit 1
+  fi
+
+  # Sanitize provided suffix if necessary
+  if [[ -z "$suffix" ]]; then
+    info "No suffix provided. Generating SSH key pair with default filename."
+  else
+    if [[ "$suffix" == _* ]]; then
+      info "Suffix already starts with underscore. Continue as is."
+    else
+      info "Adding underscore prefix to provided file suffix."
+      suffix="_$suffix"
+    fi
+  fi
+
   local filename="$HOME/.ssh/id_ed25519$suffix"
 
   if [[ -f $filename ]]; then

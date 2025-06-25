@@ -38,24 +38,7 @@ main() {
     esac
   done
 
-  if [[ -z "$email" ]]; then
-    error "Missing required email address. Please provide it using the flag -e." >&2
-    exit 1
-  fi
-
-  if [[ -z "$suffix" ]]; then
-    info "No suffix provided. Generating SSH key pair with default filename."
-  else
-    if [[ "$suffix" == _* ]]; then
-      info "Suffix already starts with underscore. Continue as is."
-    else
-      info "Adding underscore prefix to provided file suffix."
-      suffix="_$suffix"
-    fi
-  fi
-
   add_ssh_key_and_print_public_key $email $suffix
 }
 
 main "$@"
-
