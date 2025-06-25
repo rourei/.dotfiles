@@ -109,7 +109,7 @@ _clone_dotfiles_and_symlink() {
   ln -s $DOTFILE_DIR/config/.vimrc $HOME/.vimrc
   ln -s $DOTFILE_DIR/config/.vim $HOME/.vim
   ln -s $DOTFILE_DIR/config/.inputrc $HOME/.inputrc
-  ln -s $DOTFILE_DIR/config/terminator/ $HOME/.config/terminator
+  ln -s $DOTFILE_DIR/config/terminator $HOME/.config/terminator
 
   info "Dotfile setup complete."
 }
