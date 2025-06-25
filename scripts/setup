@@ -78,8 +78,8 @@ _configure_git() {
   local user_email=$2
 
   info "Configure Git installation."
-  git config --global user.name $user_name
-  git config --global user.email $user_email
+  git config --global user.name "$user_name"
+  git config --global user.email "$user_email"
   git config --global core.autocrlf input
   git config --global core.symlinks true
   git config --global core.editor vim
@@ -200,7 +200,7 @@ main() {
   cd $HOME
   _update_and_install_general_packages
   _configure_rtc
-  _configure_git $name $email
+  _configure_git "$name" "$email"
 
   add_ssh_key_and_print_public_key $email $ssh_key_suffix
   _wait_for_user "Please add the public SSH key to your account. Press Enter when done."
