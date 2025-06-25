@@ -168,7 +168,7 @@ _print_ps1_definition() {
   note "Please replace the existing definition in the .bashrc with:"
   note "### Beginning of PS1 definition ###"
   echo
-  cat $SCRIPT_DIR/scripts/assets/ps1_definition_with_git_support
+  cat $DOTFILE_DIR/scripts/assets/ps1_definition_with_git_support
   echo
   note "### End of PS1 definition ###"
 }
