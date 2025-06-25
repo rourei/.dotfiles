@@ -192,7 +192,7 @@ main() {
     exit 1
   fi
 
-  if [[ -d $DOTFILE_DIR ]];; then
+  if [[ -d $DOTFILE_DIR ]]; then
     error "Dotilfe target directory $DOTFILE_DIR already exits." >&2
     exit 1
   fi
