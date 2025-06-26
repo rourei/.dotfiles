@@ -17,6 +17,7 @@ set hlsearch		" Highlight all results
 set ignorecase		" Do case insensitive matching
 set smartcase		" Enable explicit search for capital letters
 set incsearch		" Incremental search
+set conceallevel=0  " Don't hide characters
 
 " HIGHLIGHTING ----------------------------------------------------------- {{{
 
