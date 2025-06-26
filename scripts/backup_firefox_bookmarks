@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+# Script to backup existing Firefox bookmarks from given profile to configurable target location
+# (has to be a Git repository).
+# Requires Firefox to be configured to automatically export bookmarks when being closed,
+# see https://askubuntu.com/a/1438114 for reference.
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$SCRIPT_DIR/colors"
+
+PROFILE_LOCATION="<PATH_TO_FIREFOX_PROFILE>"
+BACKUP_LOCATION="<PATH_TO_BACKUP_LOCATION>"
+COMMIT_MESSAGE="Latest Firefox Bookmarks"
+
+main() {
+  info "Starting backup of latest Firefox bookmarks"
+
+  if [[ ! -f "$PROFILE_LOCATION"/bookmarks.html ]]; then
+    error "Bookmark file does not exist."
+    exit 1
+  fi
+
+  creation_date=$(stat -c %w "$PROFILE_LOCATION"/bookmarks.html | cut -d' ' -f1)
+
+  if [[ "$creation_date" == "-" ]]; then
+    warn "No creation date available. Using today's date instead."
+    creation_date=$(date +%Y-%m-%d)
+  fi
+
+  target_filename="${creation_date}_bookmarks_firefox.html"
+
+  cp "$PROFILE_LOCATION"/bookmarks.html "$BACKUP_LOCATION"/"$target_filename"
+
+  info "Backup created. Committing changes..."
+
+  cd "$BACKUP_LOCATION"
+  git add "$target_filename"
+  git commit -m "$COMMIT_MESSAGE"
+
+  note "Changes committed. Please check and push changes if desired."
+}
+
+main

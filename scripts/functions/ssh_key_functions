@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$SCRIPT_DIR/../colors"
+
+#############################################################
+# Creates a new SSH key and outputs the resulting public key.
+# Arguments:
+#   Email address to use as comment for the key.
+#   File suffix for the resulting key files.
+# Outputs:
+#   Writes public key to stdout.
+# Returns:
+#   0 if SSH key pair was created, non-zero on error.
+#############################################################
+add_ssh_key_and_print_public_key() {
+  local email="$1"
+  local suffix="$2"
+
+  if [[ -z "$email" ]]; then
+    error "Missing required email address. Aborting." >&2
+    exit 1
+  fi
+
+  # Sanitize provided suffix if necessary
+  if [[ -z "$suffix" ]]; then
+    info "No suffix provided. Generating SSH key pair with default filename."
+  else
+    if [[ "$suffix" == _* ]]; then
+      info "Suffix already starts with underscore. Continue as is."
+    else
+      info "Adding underscore prefix to provided file suffix."
+      suffix="_$suffix"
+    fi
+  fi
+
+  local filename="$HOME/.ssh/id_ed25519$suffix"
+
+  if [[ -f $filename ]]; then
+    error "Target file $filename already exists." >&2
+    exit 1
+  fi
+
+  cd
+  info "Generating SSH key for $email under $filename."
+  ssh-keygen -t ed25519 -C $email -f $filename
+  eval "$(ssh-agent -s)"
+  ssh-add $filename 
+
+  local public_key=$( cat "${filename}.pub" )
+  info "Your public key is:"
+  info "$public_key"
+}
+

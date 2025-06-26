@@ -35,6 +35,7 @@ highlight clear SpellLocal
 
 :command Jsonf %!jq .
 :command Bs :normal! 0i#!/usr/bin/env bash<ESC>
+:command ScriptDir :normal! 0iSCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"<ESC>
 
 " }}}
 

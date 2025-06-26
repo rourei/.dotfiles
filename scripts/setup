@@ -1,0 +1,220 @@
+#!/usr/bin/env bash
+
+# Configures a fresh Ubuntu installation by installing necessary packages and initializing
+# general configurations such as Git, SSH keys and dotfile setup.
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$SCRIPT_DIR/colors"
+source "$SCRIPT_DIR/functions/ssh_key_functions"
+
+# Variables
+unset -v email
+unset -v name
+unset -v ssh_key_suffix
+CONFIG_DIR="$HOME/.config"
+DOTFILE_DIR="$HOME/.dotfiles"
+
+_help()
+{
+  echo "This script configures a fresh installation of Ubuntu with the basic necessities such as:"
+  echo "relevant packages, Git configuration, SSH keys, etc."
+  echo
+  echo "Syntax: options.sh -[h|e|n|s]"
+  echo "Options:"
+  echo "  -h    Print this help"
+  echo "  -e    Specify the email address to be used for configuration"
+  echo "  -n    Specify the name of the user for which the configuration is created"
+  echo "  -s    Specify the file suffix that will be used for the SSH key pair"
+  echo
+}
+
+_wait_for_user() {
+  local message=$1
+  read -p "$message" </dev/tty
+}
+
+#############################################################
+# Updates existing packages and installs commonly used ones.
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
+_update_and_install_general_packages() {
+  info "Update apt and install necessary packages."
+  sudo apt update
+  sudo apt -y upgrade
+  sudo apt -y install vim
+  sudo apt -y install git
+  sudo apt -y install htop
+  sudo apt -y install jq
+  sudo apt -y install gnome-tweaks # Necessary to enable the EurKey layout
+  sudo apt -y install terminator
+  sudo apt -y install tree
+  info "Packages have been updated and installed successfully."
+}
+
+#############################################################
+# Changes configuration to interpret RTC in local time.
+# This is usually only necessary for dual boot setups.
+# However, this is the main setup that I use.
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
+_configure_rtc() {
+  info "Configuring RTC interpretation to use local time."
+  timedatectl set-local-rtc 1
+}
+
+#############################################################
+# Configures git with commonly used settings.
+# Arguments:
+#   Name to be used as user name.
+#   Email address to use as user mail address.
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
+_configure_git() {
+  local user_name=$1
+  local user_email=$2
+
+  info "Configure Git installation."
+  git config --global user.name "$user_name"
+  git config --global user.email "$user_email"
+  git config --global core.autocrlf input
+  git config --global core.symlinks true
+  git config --global core.editor vim
+  git config --global init.defaultBranch main
+  git config --global pull.rebase false
+  info "Git configuration complete."
+}
+
+#############################################################
+# Clones the dotfile repository and symlinks all relevant
+# files.
+# Globals:
+#   CONFIG_DIR
+# Outputs: 
+#   Writes log output to stdout.
+#############################################################
+_clone_dotfiles_and_symlink() {
+  info "Clone dotfiles and create relevant symLinks."
+
+  if [[ ! -d "$CONFIG_DIR" ]]; then
+    info "Configuration directory does not exist yet. Creating under $CONFIG_DIR."
+    mkdir $CONFIG_DIR
+  fi
+
+  cd $HOME
+  git clone git@github.com:rourei/.dotfiles.git $DOTFILE_DIR
+  ln -s $DOTFILE_DIR/config/.vimrc $HOME/.vimrc
+  ln -s $DOTFILE_DIR/config/.vim $HOME/.vim
+  ln -s $DOTFILE_DIR/config/.inputrc $HOME/.inputrc
+  ln -s $DOTFILE_DIR/config/terminator $HOME/.config/terminator
+
+  info "Dotfile setup complete."
+}
+
+#############################################################
+# Adds scripts/ from the dotfiles repository to the path.
+# In order to do this, the .bashrc is created in case it
+# does not yet exist.
+# Globals:
+#   SCRIPT_DIR
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
+_add_scripts_to_path() {
+  info "Appending /scripts directory to path."
+
+  if [[ ! -f $HOME/.bashrc ]]; then
+    info "Bashrc did not yet exist. Creating new."
+    touch $HOME/.bashrc
+  fi
+
+  echo "# User additions" >> $HOME/.bashrc
+  echo "export PATH=\$PATH:$DOTFILE_DIR" >> $HOME/.bashrc
+
+  info "Successfully added contained scripts to path."
+}
+
+#############################################################
+# Adds shared aliases from dotfiles to local .bash_aliases.
+# In case that file does not yet exist, it will be created.
+# Globals:
+#   SCRIPT_DIR
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
+_configure_aliases() {
+  info "Configuring aliases."
+
+  if [[ ! -f $HOME/.bash_aliases ]]; then
+    info ".bash_aliases does not exist. Creating new."
+    touch $HOME/.bash_aliases
+  fi
+
+  echo "source $DOTFILE_DIR/scripts/aliases" >> $HOME/.bash_aliases
+  note "Added shared aliases. Please check if .bash_aliases is sourced in .bashrc"
+}
+
+#############################################################
+# Ouputs the PS1 definition that supports rendering the
+# current git branch.
+# Outputs:
+#  Writes PS1 definition and log output to stdout.
+#############################################################
+_print_ps1_definition() {
+  note "Manual step required: updating the PS1 defintion to include the current branch."
+  note "Please replace the existing definition in the .bashrc with:"
+  note "### Beginning of PS1 definition ###"
+  echo
+  cat $DOTFILE_DIR/scripts/assets/ps1_definition_with_git_support
+  echo
+  note "### End of PS1 definition ###"
+}
+
+main() {
+  while getopts ":he:n:s:" option; do
+    case $option in
+      h) _help
+         exit;;
+      e) email=$OPTARG;;
+      n) name=$OPTARG;;
+      s) ssh_key_suffix=$OPTARG;;
+     \?) echo "Error: Invalid option"
+         return 1
+         ;;
+    esac
+  done
+
+  if [[ -z "$email" ]] || [[ -z "$name" ]]; then
+    error "Missing required arguments. Please provide an email address (-e) and a name (-n)." >&2
+    exit 1
+  fi
+
+  if [[ -d $DOTFILE_DIR ]]; then
+    error "Dotilfe target directory $DOTFILE_DIR already exits." >&2
+    exit 1
+  fi
+
+  cd $HOME
+  _update_and_install_general_packages
+  _configure_rtc
+  _configure_git "$name" "$email"
+
+  add_ssh_key_and_print_public_key $email $ssh_key_suffix
+  _wait_for_user "Please add the public SSH key to your account. Press Enter when done."
+
+  _clone_dotfiles_and_symlink
+  _add_scripts_to_path
+  _configure_aliases
+  _print_ps1_definition
+  _wait_for_user "Press Enter when the PS1 definition has been updated."
+
+  note "Please source the .bashrc to enable new aliases and to use the updated path."
+
+  info "Setup completed successfully."
+}
+
+main "$@"
+

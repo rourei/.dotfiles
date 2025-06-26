@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+# Creates a new SSH key pair with a configurable file suffix and email address as comment.
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$SCRIPT_DIR/colors"
+source "$SCRIPT_DIR/functions/ssh_key_functions"
+
+# Variables
+unset -v email
+unset -v suffix
+
+_help()
+{
+  echo "This script creates a new SSH key with the provided email address as comment."
+  echo "Additionally, an optional suffix for the file name of the key can be provided."
+  echo "The provided suffix will be prefixed with an underscore if not already provided."
+  echo
+  echo "Syntax: add_ssh_key -[h|e|s]"
+  echo "Options:"
+  echo "  -h    Print this help"
+  echo "  -e    Specify the email address (required)"
+  echo "  -s    Specify the (optional) file suffix."
+  echo
+}
+
+main() {
+  while getopts ":he:s:" option; do
+    case $option in
+      h) _help
+         exit;;
+      e) email=$OPTARG;;
+      s) suffix=$OPTARG;;
+     \?)  error "Error: Invalid option"
+         return 1
+         ;;
+    esac
+  done
+
+  add_ssh_key_and_print_public_key $email $suffix
+}
+
+main "$@"

@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 
-#  Workaropund Git performance issue in NTFS filesystem according to https://github.com/microsoft/WSL/issues/440131
-function isWinDir {
+# Workaround Git performance issues in NTFS filesystem according
+# to https://github.com/microsoft/WSL/issues/440131
+
+function is_win_dir {
   case $PWD/ in
     /mnt/*) return $(true);;
     *) return $(false);;
   esac
 }
+
 # Wrap the git command to either run Windows git or Linux version
 function git {
-  if isWinDir
+  if is_win_dir
   then
     git.exe "$@"
   else
