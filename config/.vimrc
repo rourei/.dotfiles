@@ -115,6 +115,7 @@ call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-commentary'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
