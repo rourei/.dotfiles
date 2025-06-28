@@ -115,6 +115,7 @@ call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-commentary'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -124,6 +125,9 @@ call plug#end()
 
 " Can be toggled manually with Shift + i
 let NERDTreeShowHidden=1
+" IndentLine / Conceal Settings
+let g:vim_json_conceal=0
+let g:markdown_syntax_conceal=0
 
 " }}}
 
