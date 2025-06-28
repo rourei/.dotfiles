@@ -125,6 +125,9 @@ call plug#end()
 
 " Can be toggled manually with Shift + i
 let NERDTreeShowHidden=1
+" IndentLine / Conceal Settings
+let g:vim_json_conceal=0
+let g:markdown_syntax_conceal=0
 
 " }}}
 
