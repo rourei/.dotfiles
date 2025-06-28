@@ -15,9 +15,6 @@ evolves!
 
 - `.vimrc`: Configuration for *vim*; currently without plugins or updated key bindings
 - `.vim/`: Directory containing plugins, custom additions to the spell check dictionary, etc.
-  - the `indentline` plugin located in `/pack/` was originally obtained from
-    [GitHub](https://github.com/Yggdroot/indentLine)
-  - since it is no longer maintained (archived in 2023), all git-related content was removed
 - `.printPath`: prints the `$PATH` variable one entry per line
 - `.print_format`: minimal example for a function that prints text in a predefined colour; can be
   sourced in bash scripts
