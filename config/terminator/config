@@ -2,6 +2,7 @@
   always_on_top = True
   sticky = True
   inactive_color_offset = 0.6111111111111112
+  always_split_with_profile = True
 [keybindings]
   hide_window = <Primary>Escape
 [profiles]
