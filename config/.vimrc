@@ -53,6 +53,7 @@ map <F2> :NERDTreeToggle<CR>
 
 " Enable line numbers
 set number
+set relativenumber
 highlight LineNr ctermfg=grey
 
 " Highlight line where cursors is currently at
