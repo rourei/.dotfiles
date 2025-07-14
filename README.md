@@ -1,30 +1,27 @@
-## My personal collection of dotfiles
+# Personal Dotfiles
 
-The longer I work as a software engineer, the more I realize the benefit of having a special setup
-for different tools we use throughout the day ready at your fingertips. Especially when switching
-between devices often (e.g. work laptop, private laptop, different Raspberry Pis, etc.) the
-continuous work to re-setup everything becomes really tedious.... So this is my start to collecting
-these configuration files!
+My personal collection of configuration files and scripts for various tools.
 
-Obviously, this is merely a starting point and will hopefully grow soonish into a more advanced and
-seasoned selection of my personal configurations ;) Since I just got started with using *vim*, the
-contained `.vimrc` is also more of a playground currently than a stable config. Let's see how this
-evolves!
+## config/
 
-## Content
+- `.vimrc` and `.vim`: configuration and plugins for *vim*
+  - to install the plugins, open *vim* once and run `:PlugInstall`
+- `terminator/`: configuration for Terminator
+- `windowsterminal/settings.json`: configuration for the Windows Terminal
+- `.inputrc`: configuration for the Readline library
 
-- `.vimrc`: Configuration for *vim*; currently without plugins or updated key bindings
-- `.vim/`: Directory containing plugins, custom additions to the spell check dictionary, etc.
-- `.printPath`: prints the `$PATH` variable one entry per line
-- `.print_format`: minimal example for a function that prints text in a predefined colour; can be
-  sourced in bash scripts
-- `keyboards/`: Directory containing everything related to my mechanical keyboards (notes,
-  information, VIA configurations, etc.)
-- `windowsterminal/settings.json`: Configuration for the Windows Terminal app from the Microsoft
-  store
+## keyboards/
 
-## Installation and Usage
+- information and configuration files for various Keyboards, mainly VIA and keymaps
+- additionally, backups of the latest installed firmware may be contained
 
-After checking out the project, Vim plugins need to be installed by opening Vim and running
-`:PlugInstall` once to download the plugins. They should be available after restart.
+## scripts/
+
+- scripts for both system setup and automation of common tasks
+- additionally contains assets and base scripts/functions that can be reused across scripts
+
+## tut/
+
+- small scripts and snippets that serve as a playground/tutorial for different concepts and features
+  as well as templates for reusing them
 
