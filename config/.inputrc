@@ -1,1 +1,3 @@
+$include /etc/inputrc
+
 "\C-H":"\C-W"
