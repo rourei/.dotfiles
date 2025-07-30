@@ -41,21 +41,12 @@ highlight clear SpellLocal
 
 " KEY MAPPINGS --------------------------------------------------------------- {{{
 
-" Define expected keycodes, see https://vimhelp.org/options.txt.html#%3Aset-termcap
-" and https://superuser.com/a/806924
-" silent! execute "set <A-j>=\<Esc>j"
-" silent! execute "set <A-k>=\<Esc>k"
-
 " General
 imap <C-H> <C-W>
 inoremap jk <Esc>
 " Moving lines, see https://vim.fandom.com/wiki/Moving_lines_up_or_down#Mappings_to_move_lines
-" nnoremap <A-j> :m+<CR>==
-" nnoremap <A-k> :m-2<CR>==
-" inoremap <A-j> <Esc>:m+<CR>==gi
-" inoremap <A-k> <Esc>:m-2<CR>==gi
-" vnoremap <A-j> :m '>+1<CR>gv=gv
-" vnoremap <A-k> :m '<-2<CR>gv=gv
+nnoremap <C-j> :m+<CR>==
+nnoremap <C-k> :m-2<CR>==
 " Plugins
 map <F2> :NERDTreeToggle<CR>
 
