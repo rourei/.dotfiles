@@ -69,3 +69,7 @@ Grafana
 Opsgenie
 k9s
 webhook
+ApplicationSets
+stg
+ApplicationSetController
+AppSets
