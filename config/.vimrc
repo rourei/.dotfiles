@@ -7,17 +7,19 @@ set autoindent      " Applies indentation of current line to new line
 
 syntax on
 filetype on
-filetype plugin on	" Enable plugins and load them for detected file type
-filetype indent on	" Enable auto indentation
-set nowrap			" Prevent line wraps
-set showcmd			" Show (partial) command in status line
-set showmatch		" Show matching brackets
-set showmode		" Show current mode at the last line
-set hlsearch		" Highlight all results
-set ignorecase		" Do case insensitive matching
-set smartcase		" Enable explicit search for capital letters
-set incsearch		" Incremental search
-set conceallevel=0  " Don't hide characters
+filetype plugin on	  " Enable plugins and load them for detected file type
+filetype indent on	  " Enable auto indentation
+set nowrap			  " Prevent line wraps
+set showcmd			  " Show (partial) command in status line
+set showmatch		  " Show matching brackets
+set showmode		  " Show current mode at the last line
+set hlsearch		  " Highlight all results
+set ignorecase		  " Do case insensitive matching
+set smartcase		  " Enable explicit search for capital letters
+set incsearch		  " Incremental search
+set conceallevel=0    " Don't hide characters
+set foldmethod=syntax " Folding based on syntac of current window
+set foldlevel=3       " Keep first few fold levels open
 
 " HIGHLIGHTING ----------------------------------------------------------- {{{
 
@@ -85,7 +87,7 @@ augroup filetype_vim
 augroup END
 
 " Toggle fold setting based on file length (see https://vi.stackexchange.com/a/44899)
-autocmd! BufRead * if line('$') < 100 | setlocal nofoldenable | else | setlocal foldenable | endif
+autocmd! BufRead * if line('$') < 60 | setlocal nofoldenable | else | setlocal foldenable | endif
 
 " }}}
 
