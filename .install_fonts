@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Idea: Shallow clone nerdfonts repository and use provided install script
+# see <https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#option-7-install-script>
+# install https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/AtkinsonHyperlegibleMono.tar.xz
