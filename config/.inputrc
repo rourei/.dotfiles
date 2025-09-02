@@ -1,3 +1,5 @@
 $include /etc/inputrc
 
 "\C-H":"\C-W"
+
+set completion-ignore-case On
