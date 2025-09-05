@@ -79,7 +79,7 @@ keyboards.
 - `Epomaker_Split65_VIA_V3.json`: [Official VIA
   configuration](./epomaker/Epomaker_Split65_VIA_V3.json) from the Epomaker website
 - `epomaker_split65_layered_hhkb.json`: [Custom
-  keymap](./epomaker/epomaker_split65_layered_hhkb.json)
+  keymap](./epomaker/epomaker_split65_layered_hhkb.layout.json)
   - `Ctrl` instead of `CapsLock`
   - holding `Space` to switch to layer 2
   - layer 2 contains:
