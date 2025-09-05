@@ -72,3 +72,19 @@ keyboards.
     for VIA is included as well
 - updated VIA JSON with latest keymap added
 
+## Epomaker Split65
+
+### Files
+
+- `Epomaker_Split65_VIA_V3.json`: [Official VIA
+  configuration](./epomaker/Epomaker_Split65_VIA_V3.json) from the Epomaker website
+- `epomaker_split65_layered_hhkb.json`: [Custom
+  keymap](./epomaker/epomaker_split65_layered_hhkb.json)
+  - `Ctrl` instead of `CapsLock`
+  - holding `Space` to switch to layer 2
+  - layer 2 contains:
+    - macros to write umlaute using the EurKey layout
+    - `Fn` on number keys
+    - `Print` on letter p
+    - backtick/tilde on `Esc` (also available via regular `Esc`)
+
