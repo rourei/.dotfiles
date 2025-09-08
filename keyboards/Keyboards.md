@@ -29,8 +29,10 @@ keyboards.
   - `CapsLock` accessible via second layer (`Fn` + `CTRL`)
 - `nuphy_air75_v2_layered_hhkb.layoutb.json`:  Current [keymap](./nuphy/nuphy_air75_v2_layered_hhkb.layout.json)
   - `CapsLock` as `CTRL`
-  - Macros on layer 5 for using umlaute
-  - space bar toggles layer 5 on hold, space on tap
+  - space bar toggles layer 5 on hold, space on tap which contains:
+    - Macros for writing umlaute using the EurKey layout
+    - `Fn` on number keys
+    - `PrintScreen` on letter p
 - `QMK_firmware_nuphy_air75_v2.1_ansi_v2.0.7.bin`: [Latest official
   firmware](./nuphy/QMK_firmware_nuphy_air75_v2.1_ansi_v2.0.7.bin) from Discord
   - only as a backup, never flashed to keyboard
@@ -71,4 +73,20 @@ keyboards.
     JSON](https://github.com/jincao1/qmk_firmware/blob/v1.3.0.0/keyboards/nuphy/air75_v2/ansi/keymaps/via/air75_v2_via_v3.json)
     for VIA is included as well
 - updated VIA JSON with latest keymap added
+
+## Epomaker Split65
+
+### Files
+
+- `Epomaker_Split65_VIA_V3.json`: [Official VIA
+  configuration](./epomaker/Epomaker_Split65_VIA_V3.json) from the Epomaker website
+- `epomaker_split65_layered_hhkb.json`: [Custom
+  keymap](./epomaker/epomaker_split65_layered_hhkb.layout.json)
+  - `Ctrl` instead of `CapsLock`
+  - holding `Space` to switch to layer 2
+  - layer 2 contains:
+    - macros to write umlaute using the EurKey layout
+    - `Fn` on number keys
+    - `Print` on letter p
+    - backtick/tilde on `Esc` (also available via regular `Esc`)
 
