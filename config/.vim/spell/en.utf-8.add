@@ -79,3 +79,14 @@ MQTT
 AGVs
 ISRG
 VerneMQ
+configmaps
+configmap
+AWS
+VPA
+AdmissionController
+Kyverno
+ArgoCD
+SecurityContext
+init
+PRD
+OpenSearch
