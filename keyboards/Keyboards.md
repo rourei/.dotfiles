@@ -9,6 +9,17 @@ keyboards.
   provides more reasonable access to special characters (esp. Umlaute) while being based on the ANSI
   layout
   - available for Windows and MacOS via download, shipped with various Linux distros by default
+- to enable VIA (<usevia.app>) to access the keyboard under Linux, a custom udev rule has to be
+  created
+  - determine the vendor and device id using `lsusb`
+  - create `/etc/udev/rules.d/99-via.rules` (see file content below, replace vendor and product ID
+    with values from `lsusb` run, one entry per keyboard!)
+  - reload the udev rules to apply the changes:
+    `sudo udevadm control --reload-rules && sudo udevadm trigger`
+
+```text
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="XXXX", ATTRS{idProduct}=="XXXX", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+```
 
 ## NuPhy Air75 V2
 
