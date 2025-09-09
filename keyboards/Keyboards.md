@@ -89,4 +89,5 @@ keyboards.
     - `Fn` on number keys
     - `Print` on letter p
     - backtick/tilde on `Esc` (also available via regular `Esc`)
+    - arrow keys on `H`, `J`, `K` and `L` following Vim navigation
 
