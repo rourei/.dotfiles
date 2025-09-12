@@ -4,6 +4,7 @@ set tabstop=4
 set expandtab		" Use spaces instead of tabs
 set shiftwidth=2
 set autoindent      " Applies indentation of current line to new line
+colorscheme habamax
 
 syntax on
 filetype on
