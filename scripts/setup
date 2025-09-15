@@ -20,7 +20,7 @@ _help()
   echo "This script configures a fresh installation of Ubuntu with the basic necessities such as:"
   echo "relevant packages, Git configuration, SSH keys, etc."
   echo
-  echo "Syntax: options.sh -[h|e|n|s]"
+  echo "Syntax: setup -[h|e|n|s]"
   echo "Options:"
   echo "  -h    Print this help"
   echo "  -e    Specify the email address to be used for configuration"
