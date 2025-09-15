@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+
+# Installs the latest neovim release and configures it accordingly.
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$SCRIPT_DIR/colors"
+
+# Variables
+CONFIG_DIR="$HOME/.config"
+DOTFILE_DIR="$HOME/.dotfiles"
+TARGET_DIR="/opt/nvim"
+
+_help()
+{
+  echo "This script installs the latest release of neovim, adds it to the path and creates"
+  echo "symbolic links for all relevant configuration files."
+  echo
+  echo "Syntax: install_neovim -[h]"
+  echo "Options:"
+  echo "  -h    Print this help"
+  echo
+}
+
+#############################################################
+# Downloads the latest neovim release and extracts it to the
+# defined target directory.
+# Globals:
+#   TARGET_DIR
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
+_download_and_unpack()
+{
+  info "Downloading latest release from GitHub"
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+
+  if [[ ! -d "$TARGET_DIR" ]]; then
+    info "Target directory does not exist yet. Creating under $TARGET_DIR."
+  else
+    info "Target directory already exists. Recreate under $TARGET_DIR."
+    sudo rm -rf $TARGET_DIR
+  fi
+  sudo mkdir $TARGET_DIR
+
+  info "Extract downloaded release"
+  # Strip top level nvim-linux-x86_64 directory while unpacking
+  sudo tar -C $TARGET_DIR -xzf nvim-linux-x86_64.tar.gz --strip-components=1
+
+  rm nvim-linux-x86_64.tar.gz
+}
+
+#############################################################
+# Adds neovim's bin directory to the path by adding the
+# corresponding path extension to the .bashrc.
+# In order to do this, the .bashrc is created in case it
+# does not yet exist.
+# Globals:
+#   TARGET_DIR
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
+_extend_path()
+{
+  info "Appending neovim bin directory to path."
+
+  if [[ ! -f $HOME/.bashrc ]]; then
+    info "Bashrc did not yet exist. Creating new."
+    touch $HOME/.bashrc
+  fi
+
+  echo "export PATH=\$PATH:$TARGET_DIR/bin" >> $HOME/.bashrc
+
+  info "Successfully added neovim to path."
+}
+
+#############################################################
+# Creates all relevant symbolic links for the nvim config.
+# Globals:
+#   CONFIG_DIR
+#   DOTFILE_DIR
+# Outputs: 
+#   Writes log output to stdout.
+#############################################################
+_create_symlinks() {
+  info "Create relevant symLinks."
+
+  # TODO: Remove if not relevant
+  if [[ ! -d "$CONFIG_DIR" ]]; then
+    info "Configuration directory does not exist yet. Creating under $CONFIG_DIR."
+    mkdir $CONFIG_DIR
+  fi
+
+  if [[ ! -d "$DOTFILE_DIR" ]]; then
+    error "Dotfile directory does not exist yet. Please clone it first."
+    return 1
+  fi
+
+  cd $HOME
+  # TODO: Add necessary symbolic links
+  # ln -s $DOTFILE_DIR/config/.vimrc $HOME/.vimrc
+  # ln -s $DOTFILE_DIR/config/.vim $HOME/.vim
+
+  info "Successfully created symlinks."
+}
+
+main() {
+  while getopts ":h" option; do
+    case $option in
+      h) _help
+         exit;;
+     \?) echo "Error: Invalid option"
+         echo "Usage: "
+         echo
+         _help
+         return 1
+         ;;
+    esac
+  done
+
+  cd $HOME
+
+  _download_and_unpack
+  _extend_path
+  _create_symlinks
+
+  info "Setup completed successfully."
+  info "Please source the .bashrc to use the updated path."
+}
+
+main "$@"
