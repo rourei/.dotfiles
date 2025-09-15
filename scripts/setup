@@ -93,6 +93,7 @@ _configure_git() {
 # files.
 # Globals:
 #   CONFIG_DIR
+#   DOTFILE_DIR
 # Outputs: 
 #   Writes log output to stdout.
 #############################################################
@@ -120,7 +121,7 @@ _clone_dotfiles_and_symlink() {
 # In order to do this, the .bashrc is created in case it
 # does not yet exist.
 # Globals:
-#   SCRIPT_DIR
+#   DOTFILE_DIR
 # Outputs:
 #   Writes log output to stdout.
 #############################################################
@@ -142,7 +143,7 @@ _add_scripts_to_path() {
 # Adds shared aliases from dotfiles to local .bash_aliases.
 # In case that file does not yet exist, it will be created.
 # Globals:
-#   SCRIPT_DIR
+#   DOTFILE_DIR
 # Outputs:
 #   Writes log output to stdout.
 #############################################################
@@ -161,6 +162,8 @@ _configure_aliases() {
 #############################################################
 # Ouputs the PS1 definition that supports rendering the
 # current git branch.
+# Globals:
+#   DOTFILE_DIR
 # Outputs:
 #  Writes PS1 definition and log output to stdout.
 #############################################################
