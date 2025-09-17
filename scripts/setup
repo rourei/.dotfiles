@@ -50,6 +50,7 @@ _update_and_install_general_packages() {
   sudo apt -y install gnome-tweaks # Necessary to enable the EurKey layout
   sudo apt -y install terminator
   sudo apt -y install tree
+  sudo apt -y install curl
   info "Packages have been updated and installed successfully."
 }
 
