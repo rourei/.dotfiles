@@ -52,6 +52,11 @@ _update_and_install_general_packages() {
   sudo apt -y install tree
   sudo apt -y install curl
   info "Packages have been updated and installed successfully."
+
+  info "Install snap packages"
+  sudo snap install thunderbird
+  snap install intellij-idea-community --classic
+  info "Snap packages haven been installe successfully."
 }
 
 #############################################################
