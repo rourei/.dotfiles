@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+# Updates apt, lists upgradable packages and upgrades them.
+# Additionally, obsolete packages are removed.
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$SCRIPT_DIR/colors"
+
+# By default, enable installation and removal of packages
+dry_run=0
+
+_help()
+{
+  echo "Updates apt and outputs a list of upgradable packages. If not disabled via flag,"
+  echo "available updates are installed and obsolete package are removed."
+  echo
+  echo "Syntax: update_apt -[h|d]"
+  echo "Options:"
+  echo "  -h    Print this help"
+  echo "  -d    Dry run, i.e. only update apt without changing installed packages"
+  echo
+}
+
+main() {
+  while getopts ":hd" option; do
+    case $option in
+      h) _help
+         exit;;
+      d) dry_run=1;;
+     \?) echo "Error: Invalid option"
+         return 1
+         ;;
+    esac
+  done
+
+  info "Updating apt."
+  sudo apt -y update
+
+  info "Available updates:"
+  apt list --upgradable
+
+  if [[ $dry_run -eq 1 ]]; then
+    info "Dry run configured, skip removal of obsolete packages and installation of updates."
+  else
+    info "Upgrade packages."
+    sudo apt -y upgrade
+    info "Remove obsolete packages."
+    sudo apt -y autoremove
+  fi
+}
+
+main "$@"
