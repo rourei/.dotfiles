@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+#############################################################
+# Prints a message for the user to stdout and waits for any
+# input as confirmation.
+# Outputs:
+#   Writes to stdout.
+#############################################################
+wait_for_user() {
+  local message=$1
+  read -p "$message" </dev/tty
+}

@@ -7,6 +7,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "$SCRIPT_DIR/colors"
 source "$SCRIPT_DIR/functions/ssh_key_functions"
+source "$SCRIPT_DIR/functions/wait_for_user"
 
 # Variables
 unset -v email
@@ -27,11 +28,6 @@ _help()
   echo "  -n    Specify the name of the user for which the configuration is created"
   echo "  -s    Specify the file suffix that will be used for the SSH key pair"
   echo
-}
-
-_wait_for_user() {
-  local message=$1
-  read -p "$message" </dev/tty
 }
 
 #############################################################
@@ -213,13 +209,13 @@ main() {
   _configure_git "$name" "$email"
 
   add_ssh_key_and_print_public_key $email $ssh_key_suffix
-  _wait_for_user "Please add the public SSH key to your account. Press Enter when done."
+  wait_for_user "Please add the public SSH key to your account. Press Enter when done."
 
   _clone_dotfiles_and_symlink
   _add_scripts_to_path
   _configure_aliases
   _print_ps1_definition
-  _wait_for_user "Press Enter when the PS1 definition has been updated."
+  wait_for_user "Press Enter when the PS1 definition has been updated."
 
   note "Please source the .bashrc to enable new aliases and to use the updated path."
 
