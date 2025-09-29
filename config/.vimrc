@@ -4,23 +4,25 @@ set tabstop=4
 set expandtab		" Use spaces instead of tabs
 set shiftwidth=2
 set autoindent      " Applies indentation of current line to new line
+set encoding=utf-8
 colorscheme habamax
 
 syntax on
 filetype on
-filetype plugin on	  " Enable plugins and load them for detected file type
-filetype indent on	  " Enable auto indentation
-set nowrap			  " Prevent line wraps
-set showcmd			  " Show (partial) command in status line
-set showmatch		  " Show matching brackets
-set showmode		  " Show current mode at the last line
-set hlsearch		  " Highlight all results
-set ignorecase		  " Do case insensitive matching
-set smartcase		  " Enable explicit search for capital letters
-set incsearch		  " Incremental search
-set conceallevel=0    " Don't hide characters
-set foldmethod=syntax " Folding based on syntac of current window
-set foldlevel=3       " Keep first few fold levels open
+filetype plugin on	      " Enable plugins and load them for detected file type
+filetype indent on	      " Enable auto indentation
+set nowrap			      " Prevent line wraps
+set showcmd			      " Show (partial) command in status line
+set showmatch		      " Show matching brackets
+set showmode		      " Show current mode at the last line
+set hlsearch		      " Highlight all results
+set ignorecase		      " Do case insensitive matching
+set smartcase		      " Enable explicit search for capital letters
+set incsearch		      " Incremental search
+set conceallevel=0        " Don't hide characters
+set foldmethod=syntax     " Folding based on syntax of current window
+set foldlevel=3           " Keep first few fold levels open
+set spelllang=en_us,de_de " Use both German and English for spell checking
 
 " HIGHLIGHTING ----------------------------------------------------------- {{{
 
