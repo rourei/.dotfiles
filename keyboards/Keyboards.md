@@ -45,6 +45,7 @@ KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="XXXX", ATTRS{idProduct
     - Macros for writing umlaute using the EurKey layout
     - `Fn` on number keys
     - `PrintScreen` on letter p
+    - arrow keys on `H`, `J`, `K` and `L` following Vim navigation
 - `QMK_firmware_nuphy_air75_v2.1_ansi_v2.0.7.bin`: [Latest official
   firmware](./nuphy/QMK_firmware_nuphy_air75_v2.1_ansi_v2.0.7.bin) from Discord
   - only as a backup, never flashed to keyboard
