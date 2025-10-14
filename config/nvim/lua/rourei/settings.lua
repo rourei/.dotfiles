@@ -17,6 +17,8 @@ opt.number = true
 opt.relativenumber = true
 opt.cursorline = true
 
+opt.mouse = ""
+
 -- netrw settings
 g.netrw_liststyle = 3 -- tree-style view
 g.netrw_banner = 0
