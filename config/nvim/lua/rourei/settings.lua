@@ -19,6 +19,9 @@ opt.cursorline = true
 
 opt.mouse = ""
 
+opt.spell = true
+opt.spelllang = { "en_us", "de_de" }
+
 -- netrw settings
 g.netrw_liststyle = 3 -- tree-style view
 g.netrw_banner = 0
