@@ -5,6 +5,7 @@ set expandtab		" Use spaces instead of tabs
 set shiftwidth=2
 set autoindent      " Applies indentation of current line to new line
 set encoding=utf-8
+set scrolloff=10
 colorscheme habamax
 
 syntax on
