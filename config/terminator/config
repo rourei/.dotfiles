@@ -1,7 +1,7 @@
 [global_config]
   always_on_top = True
   sticky = True
-  inactive_color_offset = 0.60
+  inactive_color_offset = 0.6
   always_split_with_profile = True
 [keybindings]
   hide_window = <Primary>Escape
@@ -28,6 +28,34 @@
     palette = "#fbf1c7:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#7c6f64:#928374:#9d0006:#79740e:#b57614:#076678:#8f3f71:#427b58:#3c3836"
     use_system_font = False
     title_hide_sizetext = True
+  [[tangere-dark]]
+    visible_bell = True
+    icon_bell = False
+    background_color = "#1a2938"
+    background_darkness = 0.92
+    background_type = transparent
+    font = Ubuntu Sans Mono 11
+    foreground_color = "#fdfdd9"
+    show_titlebar = False
+    palette = "#000000:#f2826d:#6dafb5:#e0ba70:#8fb4cd:#bb98d9:#b2babf:#e6e4d3:#b3b3b3:#f2826d:#6dafb5:#ffdd99:#8fb4cd:#bb98d9:#a9c9cc:#2f4656"
+    use_system_font = False
+    title_hide_sizetext = True
+    title_transmit_fg_color = "#000000"
+    title_transmit_bg_color = "#a9c9cc"
+  [[tangere-light]]
+    visible_bell = True
+    icon_bell = False
+    background_color = "#fdfdfa"
+    background_darkness = 0.92
+    background_type = transparent
+    font = Ubuntu Sans Mono 11
+    foreground_color = "#000000"
+    show_titlebar = False
+    palette = "#ffffff:#9c341f:#004c73:#805619:#223355:#663d52:#4b5363:#898e99:#686868:#9c341f:#004c73:#40290a:#223355:#663d52:#002a40:#d1d1d1"
+    use_system_font = False
+    title_hide_sizetext = True
+    title_transmit_fg_color = "#000000"
+    title_transmit_bg_color = "#a9c9cc"
 [layouts]
   [[default]]
     [[[window0]]]
