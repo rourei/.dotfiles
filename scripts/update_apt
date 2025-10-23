@@ -6,6 +6,7 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "$SCRIPT_DIR/colors"
+source "$SCRIPT_DIR/functions/wait_for_user"
 
 # By default, enable installation and removal of packages
 dry_run=0
@@ -43,6 +44,7 @@ main() {
   if [[ $dry_run -eq 1 ]]; then
     info "Dry run configured, skip removal of obsolete packages and installation of updates."
   else
+    wait_for_user "Press Enter to install upgradable packages and remove obsolete packages"
     info "Upgrade packages."
     sudo apt -y upgrade
     info "Remove obsolete packages."
