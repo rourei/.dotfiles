@@ -1,3 +1,4 @@
+require("rourei.autocmd")
 require("rourei.colors")
 require("rourei.commands")
 require("rourei.remap")
