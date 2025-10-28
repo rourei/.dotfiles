@@ -11,3 +11,13 @@ vim.keymap.set("n", "[b", ":bnext<CR>")
 vim.keymap.set("n", "]b", ":bprevious<CR>")
 vim.keymap.set("n", "[B", ":bfirst<CR>")
 vim.keymap.set("n", "]B", ":blast<CR>")
+
+vim.keymap.set('n', 'yoN', function()
+  if not vim.wo.nu and not vim.wo.rnu then
+    vim.wo.nu = true
+    vim.wo.rnu = true
+  else
+    vim.wo.nu = false
+    vim.wo.rnu = false
+  end
+end, { desc = "Toggle absolute and relative line numbers" })
