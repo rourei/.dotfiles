@@ -56,6 +56,13 @@ nnoremap <C-k> :m-2<CR>==
 " Plugins
 map <F2> :NERDTreeToggle<CR>
 
+" Buffers
+" As suggested in Practical Vim by Drew Neil
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+
 " }}}
 
 " NAVIGATION ------------------------------------------------------------- {{{

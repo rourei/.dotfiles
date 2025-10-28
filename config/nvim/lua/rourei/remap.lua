@@ -6,3 +6,8 @@ vim.keymap.set("i", "jk", "<Esc>")
 -- Moving lines, see https://vim.fandom.com/wiki/Moving_lines_up_or_down#Mappings_to_move_lines
 vim.keymap.set("n", "<C-j>", ":m+<CR>==")
 vim.keymap.set("n", "<C-k>", ":m-2<CR>==")
+-- Buffers
+vim.keymap.set("n", "[b", ":bnext<CR>")
+vim.keymap.set("n", "]b", ":bprevious<CR>")
+vim.keymap.set("n", "[B", ":bfirst<CR>")
+vim.keymap.set("n", "]B", ":blast<CR>")
