@@ -48,13 +48,18 @@ highlight clear SpellLocal
 " KEY MAPPINGS --------------------------------------------------------------- {{{
 
 " General
+let mapleader=" "
+
 imap <C-H> <C-W>
 inoremap jk <Esc>
 " Moving lines, see https://vim.fandom.com/wiki/Moving_lines_up_or_down#Mappings_to_move_lines
 nnoremap <C-j> :m+<CR>==
 nnoremap <C-k> :m-2<CR>==
-" Plugins
+"--- Plugins ---
+" Nerdtree
 map <F2> :NERDTreeToggle<CR>
+" Fugitive
+nnoremap <leader>gs :Git<CR>
 
 " Buffers
 " As suggested in Practical Vim by Drew Neil
@@ -132,6 +137,7 @@ call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
 
 call plug#end()
