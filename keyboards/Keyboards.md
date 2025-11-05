@@ -9,7 +9,7 @@ keyboards.
   provides more reasonable access to special characters (esp. Umlaute) while being based on the ANSI
   layout
   - available for Windows and MacOS via download, shipped with various Linux distros by default
-- to enable VIA (<usevia.app>) to access the keyboard under Linux, a custom udev rule has to be
+- to enable [VIA](usevia.app) to access the keyboard under Linux, a custom udev rule has to be
   created
   ([source](https://www.reddit.com/r/Keychron/comments/12f3gat/useviaapp_in_linux_ie_via_support_useful_for/))
   - determine the vendor and device id using `lsusb`
