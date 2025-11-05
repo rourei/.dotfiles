@@ -47,6 +47,7 @@ _update_and_install_general_packages() {
   sudo apt -y install terminator
   sudo apt -y install tree
   sudo apt -y install curl
+  sudo apt -y install xclip # Necessary to yank into the clipboard in nvim
   info "Packages have been updated and installed successfully."
 
   info "Install snap packages"
