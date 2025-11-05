@@ -44,7 +44,7 @@ KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="XXXX", ATTRS{idProduct
   - space bar toggles layer 5 on hold, space on tap which contains:
     - Macros for writing umlaute using the EurKey layout
     - `Fn` on number keys
-    - `PrintScreen` on letter p
+    - `PrintScreen` on `\`
     - arrow keys on `H`, `J`, `K` and `L` following Vim navigation
 - `QMK_firmware_nuphy_air75_v2.1_ansi_v2.0.7.bin`: [Latest official
   firmware](./nuphy/QMK_firmware_nuphy_air75_v2.1_ansi_v2.0.7.bin) from Discord
@@ -100,7 +100,7 @@ KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="XXXX", ATTRS{idProduct
   - layer 2 contains:
     - macros to write umlaute using the EurKey layout
     - `Fn` on number keys
-    - `Print` on letter p
+    - `PrintScreen` on `\`
     - backtick/tilde on `Esc` (also available via regular `Esc`)
     - arrow keys on `H`, `J`, `K` and `L` following Vim navigation
 
