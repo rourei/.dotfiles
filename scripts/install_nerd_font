@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
 
-# Install the provided Nerd font for use in the terminal.
+# Install the provided Nerd fonts for use in the terminal.
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "$SCRIPT_DIR/colors"
-source "$SCRIPT_DIR/functions/wait_for_user"
 
 # Variables
-CONFIG_DIR="$HOME/.config"
-DOTFILE_DIR="$HOME/.dotfiles"
+FONT_DIR="${PWD%/*}/fonts"
+TARGET_DIR="$HOME/.local/share/fonts"
 
 _help()
 {
-  echo ""
+  echo "This scripts install Nerd fonts contained in the /fonts directory of this repository."
   echo ""
   echo
   echo "Syntax: install_nerd_font -[h]"
@@ -21,3 +20,61 @@ _help()
   echo "  -h    Print this help"
   echo
 }
+
+#############################################################
+# Checks existence of target directory and creates it if
+# necessary.
+# Globals:
+#   TARGET_DIR
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
+_check_target_dir_and_create()
+{
+  if [[ ! -d "$TARGET_DIR" ]]; then
+    info "Target directory does not exist yet. Creating..."
+    mkdir $TARGET_DIR
+  fi
+}
+
+#############################################################
+# Copies all Nerd fonts contained in the repository to the
+# target directory.
+# Globals:
+#   FONT_DIR
+#   TARGET_DIR
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
+_copy_fonts()
+{
+  for dir in "$FONT_DIR"/*; do
+    if [ -d "$dir" ] && [ "$dir" != "." ] && [ "$dir" != ".." ]; then
+      info "Copy directory: $dir"
+      cp -r "$dir" "$TARGET_DIR"
+    fi
+  done
+}
+
+#############################################################
+# Updates the font cache.
+# Outputs:
+#   Writes log output to stdout.
+#############################################################
+_update_font_cache()
+{
+  info "Update font cache"
+  fc-cache -f -v
+}
+
+main()
+{
+  info "Installing fonts from $FONT_DIR"
+  info "Configured target directory (user install): $TARGET_DIR"
+
+  _check_target_dir_and_create
+  _copy_fonts
+  _update_font_cache
+}
+
+main "@"
