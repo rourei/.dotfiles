@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Install the provided Nerd font for use in the terminal.
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$SCRIPT_DIR/colors"
+source "$SCRIPT_DIR/functions/wait_for_user"
+
+# Variables
+CONFIG_DIR="$HOME/.config"
+DOTFILE_DIR="$HOME/.dotfiles"
+
+_help()
+{
+  echo ""
+  echo ""
+  echo
+  echo "Syntax: install_nerd_font -[h]"
+  echo "Options:"
+  echo "  -h    Print this help"
+  echo
+}
