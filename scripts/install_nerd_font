@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 # Install the provided Nerd fonts for use in the terminal.
+# Additional fonts may be downloaded from https://www.nerdfonts.com/ and added to the /fonts directory of this
+# repository.
+# Alternatively, fonts may be directly installed using a sparse checkout of https://github.com/ryanoasis/nerd-fonts.
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
