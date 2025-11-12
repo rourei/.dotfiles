@@ -102,3 +102,10 @@ PromQL
 namespaces
 dev
 metadata
+PS1
+stdout
+dotfiles
+bashrc
+symlinks
+EurKey
+nvim
