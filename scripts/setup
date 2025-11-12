@@ -44,6 +44,7 @@ _update_and_install_general_packages() {
   sudo apt -y install htop
   sudo apt -y install jq
   sudo apt -y install gnome-tweaks # Necessary to enable the EurKey layout
+  sudo apt -y install gnome-shell-extension-manager # Necessary to install GNOME shell extensions
   sudo apt -y install terminator
   sudo apt -y install tree
   sudo apt -y install curl
@@ -164,7 +165,7 @@ _configure_aliases() {
 }
 
 #############################################################
-# Ouputs the PS1 definition that supports rendering the
+# Outputs the PS1 definition that supports rendering the
 # current git branch.
 # Globals:
 #   DOTFILE_DIR
@@ -181,17 +182,29 @@ _print_ps1_definition() {
   note "### End of PS1 definition ###"
 }
 
+#############################################################
+# Outputs the remaining manual steps that need to be done to
+# finalize the setup.
+# Outputs:
+#  Writes log output to stdout.
+#############################################################
+_print_manual_steps() {
+  note "Remaining manual steps required:"
+  note "- Install LockKeys GNOME extension using the extension manager and configure it"
+  note "- Install WinTile GNOME extension using the extension manager and configure it"
+}
+
 main() {
   while getopts ":he:n:s:" option; do
     case $option in
       h) _help
-         exit;;
+        exit;;
       e) email=$OPTARG;;
       n) name=$OPTARG;;
       s) ssh_key_suffix=$OPTARG;;
-     \?) echo "Error: Invalid option"
-         return 1
-         ;;
+      \?) echo "Error: Invalid option"
+        return 1
+        ;;
     esac
   done
 
@@ -222,6 +235,7 @@ main() {
   note "Please source the .bashrc to enable new aliases and to use the updated path."
 
   info "Setup completed successfully."
+  _print_manual_steps
 }
 
 main "$@"
