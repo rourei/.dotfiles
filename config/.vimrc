@@ -55,6 +55,8 @@ inoremap jk <Esc>
 " Moving lines, see https://vim.fandom.com/wiki/Moving_lines_up_or_down#Mappings_to_move_lines
 nnoremap <C-j> :m+<CR>==
 nnoremap <C-k> :m-2<CR>==
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 "--- Plugins ---
 " Nerdtree
 map <F2> :NERDTreeToggle<CR>
