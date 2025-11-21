@@ -11,14 +11,17 @@ CONFIG_DIR="$HOME/.config"
 DOTFILE_DIR="$HOME/.dotfiles"
 TARGET_DIR="/opt/nvim"
 
+full_install=0
+
 _help()
 {
-  echo "This script installs the latest release of neovim, adds it to the path and creates"
-  echo "symbolic links for all relevant configuration files."
+  echo "This script updates to the latest release of neovim. If configured to do a full install,"
+  echo "it adds it to the path and creates symbolic links for all relevant configuration files."
   echo
-  echo "Syntax: install_neovim -[h]"
+  echo "Syntax: install_neovim -[h|i]"
   echo "Options:"
   echo "  -h    Print this help"
+  echo "  -i    Full installation incl. path updates and symlinks"
   echo
 }
 
@@ -108,24 +111,28 @@ main() {
   while getopts ":h" option; do
     case $option in
       h) _help
-         exit;;
-     \?) echo "Error: Invalid option"
-         echo "Usage: "
-         echo
-         _help
-         return 1
-         ;;
+        exit;;
+      i) full_install=1;;
+      \?) echo "Error: Invalid option"
+        echo "Usage: "
+        echo
+        _help
+        return 1
+        ;;
     esac
   done
 
   cd $HOME
 
   _download_and_unpack
-  _extend_path
-  _create_symlinks
+  if [[ $full_install -eq 1 ]]; then
+    info "Full installation requested"
+    _extend_path
+    _create_symlinks
+    info "Please source the .bashrc to use the updated path."
+  fi
 
   info "Setup completed successfully."
-  info "Please source the .bashrc to use the updated path."
 }
 
 main "$@"
