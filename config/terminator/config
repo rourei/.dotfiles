@@ -1,5 +1,5 @@
 [global_config]
-  window_state = fullscreen
+  window_state = maximise
   always_on_top = True
   sticky = True
   inactive_color_offset = 0.6
