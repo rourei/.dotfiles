@@ -96,11 +96,27 @@ KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="XXXX", ATTRS{idProduct
 - `epomaker_split65_layered_hhkb.json`: [Custom
   keymap](./epomaker/epomaker_split65_layered_hhkb.layout.json)
   - `Ctrl` instead of `CapsLock`
-  - holding `Space` to switch to layer 2
+  - holding `Space` to switch to layer 2 temporarily
   - layer 2 contains:
     - macros to write umlaute using the EurKey layout
     - `Fn` on number keys
     - `PrintScreen` on `\`
     - backtick/tilde on `Esc` (also available via regular `Esc`)
     - arrow keys on `H`, `J`, `K` and `L` following Vim navigation
+- `epomaker_split65_layered_hhkb_gaming.json`: [Custom
+  keymap](./epomaker/epomaker_split65_layered_hhkb_gaming.layout.json)
+  - default layer 0 contains following customization:
+    - `Ctrl` instead of `CapsLock`
+    - holding `Space` to switch to layer 3 temporarily
+  - layer 3 contains:
+    - macros to write umlaute using the EurKey layout
+    - `Fn` on number keys
+    - `PrintScreen` on `\`
+    - backtick/tilde on `Esc` (also available via regular `Esc`)
+    - arrow keys on `H`, `J`, `K` and `L` following Vim navigation
+  - when on layer 0: `Fn` + `G` permanently switches to layer 2
+    - `Ctrl` instead of `CapsLock`
+    - "gaming" layout, i.e. `Space` does not have any layer switching capabilities
+    - when this layer is active, `Fn` + `N` switches back to layer 0
+
 
