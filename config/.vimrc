@@ -49,6 +49,7 @@ highlight clear SpellLocal
 
 " General
 let mapleader=" "
+nnoremap <leader>ft :Ex<CR>
 
 imap <C-H> <C-W>
 inoremap jk <Esc>
@@ -58,8 +59,6 @@ nnoremap <C-k> :m-2<CR>==
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 "--- Plugins ---
-" Nerdtree
-map <F2> :NERDTreeToggle<CR>
 " Fugitive
 nnoremap <leader>gs :Git<CR>
 
@@ -136,7 +135,6 @@ set laststatus=2
 
 call plug#begin()
 
-Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -148,8 +146,6 @@ call plug#end()
 
 " PLUGIN CONFIG ------------------------------------------------------------ {{{
 
-" Can be toggled manually with Shift + i
-let NERDTreeShowHidden=1
 " IndentLine / Conceal Settings
 let g:vim_json_conceal=0
 let g:markdown_syntax_conceal=0
