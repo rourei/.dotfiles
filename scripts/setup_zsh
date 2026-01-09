@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+brew install --cask iterm2
+brew install git
+brew install jq
+brew install neovim
+brew install tree
+brew install bash
+brew install bash-completion
+
+# Set bash as default shell
+chsh -s /usr/local/bin/bash
+
