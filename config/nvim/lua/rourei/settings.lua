@@ -15,7 +15,9 @@ opt.autoindent = true
 opt.textwidth = 120
 opt.wrap = true
 
-opt.foldlevel = 3
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldlevel = 4
 
 opt.number = true
 opt.relativenumber = true
