@@ -119,5 +119,5 @@ fi
 # User additions
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 export PATH=$PATH:$JAVA_HOME/bin
-export PATH=$PATH:$HOME/rouven/.dotfiles/scripts
+export PATH=$PATH:$HOME/.dotfiles/scripts
 export PATH=$PATH:$HOME/.local/bin
