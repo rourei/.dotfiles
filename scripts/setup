@@ -111,7 +111,7 @@ _clone_dotfiles_and_symlink() {
 
   cd $HOME
   git clone git@github.com:rourei/.dotfiles.git $DOTFILE_DIR
-  ln -s $DOTFILE_DIR/config/nvim $HOME/nvim
+  ln -s $DOTFILE_DIR/config/nvim $HOME/.config/nvim
   ln -s $DOTFILE_DIR/config/.vimrc $HOME/.vimrc
   ln -s $DOTFILE_DIR/config/.vim $HOME/.vim
   ln -s $DOTFILE_DIR/config/.ideavimrc $HOME/.ideavimrc
