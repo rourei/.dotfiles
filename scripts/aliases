@@ -4,6 +4,8 @@ alias replaceSpaces='for f in *\ *; do mv "$f" "${f// /_}"; done'
 alias dateDir='mkdir $(date +%Y-%m-%d)'
 
 alias la='ls -ACF'
+alias ll='ls -alF'
+alias l='ls -CF'
 
 # Directory Navigation
 alias ..='cd ..'
