@@ -17,7 +17,7 @@ opt.wrap = true
 
 opt.foldmethod = "expr"
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-opt.foldlevel = 4
+opt.foldlevel = 20
 
 opt.number = true
 opt.relativenumber = true
