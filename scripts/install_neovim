@@ -108,7 +108,7 @@ _create_symlinks() {
 }
 
 main() {
-  while getopts ":h" option; do
+  while getopts ":hi" option; do
     case $option in
       h) _help
         exit;;
