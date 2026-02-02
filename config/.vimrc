@@ -25,6 +25,8 @@ set foldmethod=syntax     " Folding based on syntax of current window
 set foldlevel=3           " Keep first few fold levels open
 set spelllang=en_us,de_de " Use both German and English for spell checking
 
+let g:netrw_liststyle=3
+
 " HIGHLIGHTING ----------------------------------------------------------- {{{
 
 " Xterm Color Reference Table ->  https://github.com/guns/xterm-color-table.vim
@@ -53,7 +55,8 @@ highlight NonText guibg=NONE ctermbg=NONE
 
 " General
 let mapleader=" "
-nnoremap <leader>ft :Ex<CR>
+nnoremap <leader>fft :Ex<CR>
+nnoremap <leader>ft :Vex<CR>
 
 imap <C-H> <C-W>
 inoremap jk <Esc>
