@@ -60,6 +60,8 @@ nnoremap <leader>ft :Vex<CR>
 
 imap <C-H> <C-W>
 inoremap jk <Esc>
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
 " Moving lines, see https://vim.fandom.com/wiki/Moving_lines_up_or_down#Mappings_to_move_lines
 nnoremap <C-j> :m+<CR>==
 nnoremap <C-k> :m-2<CR>==
