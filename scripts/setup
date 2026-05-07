@@ -43,6 +43,7 @@ _update_and_install_general_packages() {
   sudo apt -y install git
   sudo apt -y install htop
   sudo apt -y install jq
+  sudo apt -y install fzf
   sudo apt -y install gnome-tweaks # Necessary to enable the EurKey layout
   sudo apt -y install gnome-shell-extension-manager # Necessary to install GNOME shell extensions
   sudo apt -y install terminator
