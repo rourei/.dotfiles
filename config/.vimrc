@@ -70,6 +70,8 @@ vnoremap K :m '<-2<CR>gv=gv
 "--- Plugins ---
 " Fugitive
 nnoremap <leader>gs :Git<CR>
+nnoremap <leader>gc :Git commit<CR>
+nnoremap <leader>gd :Git diff<CR>
 
 " Buffers
 " As suggested in Practical Vim by Drew Neil
