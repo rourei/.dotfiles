@@ -16,3 +16,4 @@ alias dotfiles='cd $HOME/.dotfiles'
 # see https://stackoverflow.com/a/20499690 for details
 alias checkBranchState='git for-each-ref --format="%(refname:short) %(upstream:track) %(upstream:remotename)" refs/heads'
 alias gcam='git commit -am'
+alias gl='git log --oneline | fzf --preview "git show --name-only {1}"'
